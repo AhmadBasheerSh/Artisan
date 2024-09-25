@@ -1,0 +1,642 @@
+@import url('https://fonts.googleapis.com/css2?family=Reem+Kufi+Fun:wght@400..700&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Harmattan:wght@400;500;700&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Lemonada:wght@300..700&display=swap');
+
+
+body{
+    direction: ltr;
+    background: #f8f9fa;
+    margin: 0;
+    padding: 0;
+    font-family: "Harmattan", sans-serif;
+    font-weight: 500;
+    font-style: normal;
+    font-size: 20px;
+}
+
+a{
+    text-decoration: none;
+    color: black;
+}
+
+nav{
+    position: fixed;
+    top: 0;
+    width: 100%;
+    z-index: 1000;
+    background-color: #fff;
+    border-bottom: 1px solid #ddd;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+ul{
+    list-style: none;
+    width: 250px;
+    display: flex;
+    justify-content: space-between;
+}
+
+.reem-kufi-fun {
+    font-family: "Reem Kufi Fun", sans-serif;
+    font-optical-sizing: auto;
+    font-weight: weight;
+    font-style: normal;
+}
+
+.logo {
+    color: gold;
+    font-weight: bold;
+    font-size: 48px;
+}
+
+.contaner{
+    position: relative;
+    background: #f8f9fa;
+    width: 100%;
+    height: 500px;
+    overflow: hidden;
+    display: flex;
+    justify-content: center;
+}
+
+.slider_text{
+    position: absolute;
+    font-size: 40px;
+    font-family: "Lemonada", cursive;
+    top: 30px;
+}
+
+img{
+    width: 100%;
+    height: 100%;
+    border-radius: 20px;
+}
+
+#d1{
+    position: absolute;
+    width: 150px;
+    height: 250px;
+    top: 500px;
+    left: -75px;
+    border-radius: 20px;
+    animation-name: d1;
+    animation-duration: 1s;
+    animation-fill-mode: forwards;
+}
+
+@keyframes d1 {
+    from{
+        translate: 0px 0px;
+    }
+    to{
+        translate: 0px -400px;
+    }
+}
+
+@keyframes d1_r {
+    from{
+        translate: 0px -400px;
+    }
+    to{
+        translate: 0px 0px;
+    }
+}
+
+#d2{
+    position: absolute;
+    width: 150px;
+    height: 250px;
+    top: 500px;
+    left: -75px;
+    border-radius: 20px;
+    animation-name: d2;
+    animation-duration: 1s;
+    animation-delay: 1s;
+    animation-fill-mode: forwards;
+}
+
+@keyframes d2 {
+    from{
+        translate: 0px 0px;
+    }
+    to{
+        translate: 0px -130px;
+    }
+}
+
+@keyframes d2_r {
+    from{
+        translate: 0px -130px;
+    }
+    to{
+        translate: 0px 0px;
+    }
+}
+
+#d3{
+    position: absolute;
+    width: 150px;
+    height: 250px;
+    top: 500px;
+    left: 100px;
+    border-radius: 20px;
+    animation-name: d3;
+    animation-duration: 1s;
+    /* animation-delay: 1s; */
+    animation-fill-mode: forwards;
+}
+
+@keyframes d3 {
+    from{
+        translate: 0px 0px;
+    }
+    to{
+        translate: 0px -330px;
+    }
+}
+
+@keyframes d3_r {
+    from{
+        translate: 0px -330px;
+    }
+    to{
+        translate: 0px 0px;
+    }
+}
+
+#d4{
+    position: absolute;
+    width: 150px;
+    height: 250px;
+    top: 500px;
+    left: 100px;
+    border-radius: 20px;
+    animation-name: d4;
+    animation-duration: 1s;
+    animation-delay: 1s;
+    animation-fill-mode: forwards;
+}
+
+@keyframes d4 {
+    from{
+        translate: 0px 0px;
+    }
+    to{
+        translate: 0px -60px;
+    }
+}
+
+@keyframes d4_r {
+    from{
+        translate: 0px -60px;
+    }
+    to{
+        translate: 0px 0px;
+    }
+}
+
+#d5{
+    position: absolute;
+    width: 150px;
+    height: 250px;
+    top: 500px;
+    left: 275px;
+    border-radius: 20px;
+    animation-name: d5;
+    animation-duration: 1s;
+    /* animation-delay: 1s; */
+    animation-fill-mode: forwards;
+}
+
+@keyframes d5 {
+    from{
+        translate: 0px 0px;
+    }
+    to{
+        translate: 0px -260px;
+    }
+}
+
+@keyframes d5_r {
+    from{
+        translate: 0px -260px;
+    }
+    to{
+        translate: 0px 0px;
+    }
+}
+
+#d6{
+    position: absolute;
+    width: 150px;
+    height: 250px;
+    top: 500px;
+    left: 450px;
+    border-radius: 20px;
+    animation-name: d6;
+    animation-duration: 1s;
+    animation-delay: 1s;
+    animation-fill-mode: forwards;
+}
+
+@keyframes d6 {
+    from{
+        translate: 0px 0px;
+    }
+    to{
+        translate: 0px -210px;
+    }
+}
+
+@keyframes d6_r {
+    from{
+        translate: 0px -210px;
+    }
+    to{
+        translate: 0px 0px;
+    }
+}
+
+#d7{
+    position: absolute;
+    width: 150px;
+    height: 250px;
+    top: 500px;
+    left: 625px;
+    border-radius: 20px;
+    animation-name: d7;
+    animation-duration: 1s;
+    animation-delay: 1s;
+    animation-fill-mode: forwards;
+}
+
+@keyframes d7 {
+    from{
+        translate: 0px 0px;
+    }
+    to{
+        translate: 0px -150px;
+    }
+}
+
+@keyframes d7_r {
+    from{
+        translate: 0px -130px;
+    }
+    to{
+        translate: 0px 0px;
+    }
+}
+
+#d8{
+    position: absolute;
+    width: 150px;
+    height: 250px;
+    top: 500px;
+    left: 800px;
+    border-radius: 20px;
+    animation-name: d8;
+    animation-duration: 1s;
+    animation-delay: 1s;
+    animation-fill-mode: forwards;
+}
+
+@keyframes d8 {
+    from{
+        translate: 0px 0px;
+    }
+    to{
+        translate: 0px -210px;
+    }
+}
+
+@keyframes d8_r {
+    from{
+        translate: 0px -210px;
+    }
+    to{
+        translate: 0px 0px;
+    }
+}
+
+#d9{
+    position: absolute;
+    width: 150px;
+    height: 250px;
+    top: 500px;
+    left: 975px;
+    border-radius: 20px;
+    animation-name: d9;
+    animation-duration: 1s;
+    /* animation-delay: 1s; */
+    animation-fill-mode: forwards;
+}
+
+@keyframes d9 {
+    from{
+        translate: 0px 0px;
+    }
+    to{
+        translate: 0px -260px;
+    }
+}
+
+@keyframes d9_r {
+    from{
+        translate: 0px -260px;
+    }
+    to{
+        translate: 0px 0px;
+    }
+}
+
+#d10{
+    position: absolute;
+    width: 150px;
+    height: 250px;
+    top: 500px;
+    left: 1150px;
+    border-radius: 20px;
+    animation-name: d10;
+    animation-duration: 1s;
+    /* animation-delay: 2s; */
+    animation-fill-mode: forwards;
+}
+
+@keyframes d10 {
+    from{
+        translate: 0px 0px;
+    }
+    to{
+        translate: 0px -330px;
+    }
+}
+
+@keyframes d10_r {
+    from{
+        translate: 0px -330px;
+    }
+    to{
+        translate: 0px 0px;
+    }
+}
+
+#d11{
+    position: absolute;
+    width: 150px;
+    height: 250px;
+    top: 500px;
+    left: 1150px;
+    border-radius: 20px;
+    animation-name: d11;
+    animation-duration: 1s;
+    animation-delay: 1s;
+    animation-fill-mode: forwards;
+}
+
+@keyframes d11 {
+    from{
+        translate: 0px 0px;
+    }
+    to{
+        translate: 0px -60px;
+    }
+}
+
+@keyframes d11_r {
+    from{
+        translate: 0px -60px;
+    }
+    to{
+        translate: 0px 0px;
+    }
+}
+
+#d12{
+    position: absolute;
+    width: 150px;
+    height: 250px;
+    top: 500px;
+    left: 1325px;
+    border-radius: 20px;
+    animation-name: d12;
+    animation-duration: 1s;
+    /* animation-delay: 2.25s; */
+    animation-fill-mode: forwards;
+}
+
+@keyframes d12 {
+    from{
+        translate: 0px 0px;
+    }
+    to{
+        translate: 0px -400px;
+    }
+}
+
+@keyframes d12_r {
+    from{
+        translate: 0px -400px;
+    }
+    to{
+        translate: 0px 0px;
+    }
+}
+
+#d13{
+    position: absolute;
+    width: 150px;
+    height: 250px;
+    top: 500px;
+    left: 1325px;
+    border-radius: 20px;
+    animation-name: d13;
+    animation-duration: 1s;
+    animation-delay: 1s;
+    animation-fill-mode: forwards;
+}
+
+@keyframes d13 {
+    from{
+        translate: 0px 0px;
+    }
+    to{
+        translate: 0px -130px;
+    }
+}
+
+@keyframes d13_r {
+    from{
+        translate: 0px -130px;
+    }
+    to{
+        translate: 0px 0px;
+    }
+}
+
+.buttons-container {
+    display: flex;
+    position: absolute;
+    top: 200px;
+    gap: 20px; /* المسافة بين النقاط */
+}
+
+.circle-btn {
+    width: 15px; /* عرض الزر */
+    height: 15px; /* ارتفاع الزر */
+    border-radius: 50%; /* تحويل الزر إلى شكل دائري */
+    background-color: #3498db; /* لون الخلفية */
+    border: none; /* إزالة الحدود */
+    cursor: pointer; /* تغيير مؤشر الماوس عند التمرير */
+    transition: background-color 0.3s ease; /* تأثير الانتقال */
+}
+
+.circle-btn.active {
+    background-color: #01018f;
+}
+
+.circle-btn:hover {
+    background-color: #052e4a; /* لون عند التمرير */
+}
+
+.circle-btn:active {
+    background-color: #1e6a8d; /* لون عند الضغط */
+}
+
+#slide-title {
+    position: absolute;
+    top: 80px;
+    color: #052e4a;
+    font-size: 45px;
+}
+
+/* ### contaner 2 ### */
+.contaner2{
+    direction: rtl;
+    display: flex;
+    justify-content: space-around;
+    align-items: center;
+    background: #ecde8c;
+    height: 650px;
+    width: 100%;
+}
+
+.c2_title{
+    font-size: 50px;
+    font-weight: bold;
+}
+
+.c2_text{
+    font-size: 30px;
+}
+
+.c2_img{
+    position: relative;
+    width: 450px;
+    height: 500px;
+    /* background-color: red; */
+}
+
+.c2_img1{
+    position: absolute;
+    top: 0;
+    right: 0;
+    width: 150px;
+    height: 200px;
+}
+
+.c2_img2{
+    position: absolute;
+    bottom: 0;
+    right: 0;
+    width: 150px;
+    height: 200px;
+}
+
+.c2_img3{
+    position: absolute;
+    top: 90px;
+    left: 20px;
+    width: 190px;
+    height: 280px;
+}
+
+.c2_img4{
+    position: absolute;
+    top: 30px;
+    right: 50px;
+    width: 250px;
+    height: 400px;
+}
+
+/* ### contaner 3 ### */
+.contaner3{
+    direction: rtl;
+    display: flex;
+    justify-content: space-around;
+    align-items: center;
+    background: #fca6a6;
+    height: 650px;
+    width: 100%;
+    position: relative;
+}
+
+.c3_img1{
+    position: absolute;
+    top: 50px;
+    right: 50px;
+    width: 150px;
+    height: 200px;
+}
+
+.c3_img2{
+    position: absolute;
+    top: 50px;
+    right: 320px;
+    width: 300px;
+    height: 300px;
+}
+
+.c3_img3{
+    position: absolute;
+    top: 450px;
+    right: 80px;
+    width: 200px;
+    height: 150px;
+}
+
+.c3_img4{
+    position: absolute;
+    top: 280px;
+    right: 110px;
+    width: 150px;
+    height: 150px;
+}
+
+.c3_img5{
+    position: absolute;
+    top: 420px;
+    right: 400px;
+    width: 150px;
+    height: 200px;
+}
+
+/* ### contaner 4 ### */
+.contaner4{
+    direction: rtl;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    background: #9ef09e;
+    height: 650px;
+    width: 100%;
+}
+
+.c4_img{
+    position: relative;
+    width: 40%;
+    height: 100%;
+    background-color: red;
+}
