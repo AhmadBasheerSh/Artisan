@@ -1,0 +1,270 @@
+/* إعدادات عامة */
+body {
+    font-family: 'Roboto', sans-serif;
+    background-color: #f0f2f5; /* خلفية رمادية فاتحة مشابهة لـ Pinterest */
+    color: #333; /* اللون الرئيسي للنص */
+    margin: 0;
+    padding: 0;
+  }
+
+  /* حاوية المنشور */
+  .post-container {
+    width: 60%;
+    max-width: 800px;
+    margin: 20px auto;
+    background-color: #fff;
+    border-radius: 16px;
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+    overflow: hidden;
+  }
+
+  .post-image img {
+    width: 100%;
+    height: auto;
+  }
+
+  /* تفاصيل المنشور */
+  .post-details {
+    padding: 16px 24px;
+  }
+
+  .post-details h2 {
+    font-size: 24px;
+    font-weight: bold;
+    color: #333;
+    margin: 0 0 10px;
+  }
+
+  .author-info {
+    display: flex;
+    align-items: center;
+    gap: 12px;
+    margin-top: 8px;
+  }
+
+  .author-info img {
+    width: 48px;
+    height: 48px;
+    border-radius: 50%;
+    object-fit: cover;
+  }
+
+  .author-info span {
+    font-weight: 600;
+    color: #333;
+  }
+
+  .follow-button {
+    background-color: #e60023;
+    color: #fff;
+    border: none;
+    border-radius: 20px;
+    padding: 8px 16px;
+    font-weight: bold;
+    cursor: pointer;
+    transition: background-color 0.3s ease;
+    margin-left: auto; /* لجعل الزر بجانب اسم المؤلف */
+  }
+
+  .follow-button:hover {
+    background-color: #cc001f;
+  }
+
+  /* أزرار التفاعل */
+  .post-actions {
+    display: flex;
+    gap: 10px;
+    margin-top: 16px;
+  }
+
+  .post-actions button {
+    background-color: #e60023;
+    color: #fff;
+    border: none;
+    border-radius: 50%;
+    width: 40px;
+    height: 40px;
+    font-size: 16px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    cursor: pointer;
+    transition: background-color 0.3s ease;
+    position: relative;
+  }
+
+  /* أيقونة القلب */
+.like-button {
+    display: flex;
+    align-items: center;
+    gap: 8px; /* مسافة بين الأيقونة والعدد */
+    background-color: transparent; /* خلفية شفافة لأيقونة القلب */
+    color: #e60023; /* لون القلب */
+  }
+
+  .post-actions button:hover {
+    background-color: #cc001f;
+  }
+
+  /* وصف المنشور */
+  .post-description {
+    font-size: 16px;
+    color: #555;
+    line-height: 1.6;
+    margin-top: 16px;
+  }
+
+  /* قسم التعليقات */
+  .add-comment-section {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    margin-top: 16px;
+    padding: 8px 16px;
+    background-color: #f4f4f4; /* خلفية خفيفة */
+    border-top-left-radius: 24px; /* زوايا مدورة */
+    border-top-right-radius: 24px; /* زوايا مدورة */
+  }
+
+  .comments-section {
+    margin-top: 20px;
+    border-top: 1px solid #ddd;
+    padding-top: 10px;
+  }
+
+  .comments-section h3 {
+    font-size: 18px;
+    font-weight: bold;
+    color: #333;
+  }
+
+  .comment {
+    display: flex;
+    align-items: start;
+    gap: 10px;
+    margin-top: 10px;
+  }
+
+  .comment img {
+    width: 32px;
+    height: 32px;
+    border-radius: 50%;
+    object-fit: cover;
+  }
+
+  .comment span {
+    font-weight: bold;
+    color: #111;
+  }
+
+  .comment p {
+    margin: 0;
+    color: #555;
+  }
+
+  /* صورة المستخدم */
+.user-avatar {
+    width: 36px;
+    height: 36px;
+    border-radius: 50%;
+    object-fit: cover;
+  }
+
+  /* حقل إدخال التعليق */
+.comment-input {
+    flex: 1;
+    padding: 8px 12px;
+    border: none;
+    border-radius: 20px;
+    background-color: #fff;
+    outline: none;
+    font-size: 14px;
+    color: #333;
+    transition: box-shadow 0.3s ease;
+  }
+
+  /* تأثير عند التركيز */
+  .comment-input:focus {
+    box-shadow: 0 0 4px rgba(0, 0, 0, 0.2);
+  }
+
+  /* زر إرسال التعليق */
+  .send-comment-button {
+    background-color: transparent;
+    border: none;
+    color: #555;
+    font-size: 18px;
+    cursor: pointer;
+    transition: color 0.3s ease;
+  }
+
+  .send-comment-button:hover {
+    color: #e60023; /* لون مختلف عند التمرير */
+  }
+
+  /* قسم المنشورات المشابهة */
+  .related-posts {
+    margin-top: 20px;
+    padding: 0 24px 20px;
+  }
+
+  .related-posts h3 {
+    font-size: 18px;
+    font-weight: bold;
+    color: #333;
+    margin-bottom: 12px;
+  }
+
+  .related-posts-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(100px, 1fr));
+    gap: 12px;
+  }
+
+  .related-posts-grid img {
+    width: 100%;
+    height: 100px;
+    object-fit: cover;
+    border-radius: 8px;
+  }
+
+  .posts-container{
+    margin: 50px;
+    width: 95%;
+    height: 500px;
+    background-color: #fff;
+    border-radius: 16px;
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+  }
+
+  /* إعدادات زر الرجوع */
+.back-button {
+    position: fixed; /* يظل الزر ثابتًا في أعلى الصفحة */
+    top: 20px;
+    left: 20px;
+    z-index: 1000; /* فوق جميع العناصر الأخرى */
+  }
+
+  .back-button button {
+    background-color: #ffffff;
+    color: #333;
+    border: none;
+    border-radius: 50%;
+    width: 40px;
+    height: 40px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    cursor: pointer;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.2);
+    transition: background-color 0.3s ease;
+  }
+
+  .back-button button i {
+    font-size: 18px;
+    color: #e60023; /* لون السهم الأحمر مثل Pinterest */
+  }
+
+  .back-button button:hover {
+    background-color: #f4f4f4;
+  }
