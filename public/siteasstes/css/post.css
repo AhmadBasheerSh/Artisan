@@ -1,5 +1,6 @@
 /* إعدادات عامة */
 body {
+    direction: rtl;
     font-family: 'Roboto', sans-serif;
     background-color: #f0f2f5; /* خلفية رمادية فاتحة مشابهة لـ Pinterest */
     color: #333; /* اللون الرئيسي للنص */
@@ -93,6 +94,22 @@ body {
     position: relative;
   }
 
+    .follow-btn {
+        background-color: #e60023;
+        color: #fff;
+        border: none;
+        padding: 10px 20px;
+        border-radius: 20px;
+        cursor: pointer;
+        font-size: 14px;
+        margin-top: 6px ;
+        max-height: 40px;
+    }
+
+    .follow-btn:hover {
+        background-color: #c1001a;
+    }
+
   /* أيقونة القلب */
 .like-button {
     display: flex;
@@ -127,18 +144,20 @@ body {
   }
 
   .comments-section {
-    margin-top: 20px;
+    margin-top: 5px;
     border-top: 1px solid #ddd;
     padding-top: 10px;
   }
 
   .comments-section h3 {
+    margin-right: 5px;
     font-size: 18px;
     font-weight: bold;
     color: #333;
   }
 
   .comment {
+    margin-right: 10px;
     display: flex;
     align-items: start;
     gap: 10px;
@@ -162,13 +181,34 @@ body {
     color: #555;
   }
 
+  .comment-content {
+    flex: 1;
+  }
+
   /* صورة المستخدم */
 .user-avatar {
-    width: 36px;
-    height: 36px;
+    width: 40px;
+    height: 40px;
     border-radius: 50%;
     object-fit: cover;
   }
+
+  .username {
+    font-weight: bold;
+    color: #333;
+    }
+
+    .comment-time {
+        font-size: 0.7em;
+        color: #888;
+        margin-left: 10px;
+        display: block;
+    }
+
+    .comment-text {
+        margin: 5px 0 0;
+        color: #444;
+    }
 
   /* حقل إدخال التعليق */
 .comment-input {

@@ -25,8 +25,8 @@
           <div class="author-info">
             <img src="{{ asset('mainassets/img/main_1.jpeg') }}" alt="Author">
             <span>Author Name</span>
-            <button>Follow</button>
-          </div>
+            <button class="follow-btn"><i class="fa-sharp fa-solid fa-user-plus"></i>        متابعة  </button>
+        </div>
           <div class="post-actions">
             <div>
                 <i class="fa fa-heart" style="color: red;"></i> <!-- أيقونة القلب -->
@@ -38,26 +38,52 @@
           <p class="post-description">Description of the post goes here.</p>
         </div>
         <div class="comments-section">
-          <h3>Comments</h3>
-          <div class="comment">
+          <h3>التعليقات</h3>
+
+          <!-- مثال على تعليق -->
+            <div class="comment">
+                <img src="{{ asset('mainassets/img/main_1.jpeg') }}" alt="User Avatar" class="user-avatar">
+                <div class="comment-content">
+                    <span class="username">Ahmad Basheer</span>
+                    <span class="comment-time">منذ 5 دقائق</span>
+                    <p class="comment-text">هذا هو نص التعليق.</p>
+                </div>
+            </div>
+            <div class="comment">
+                <img src="{{ asset('mainassets/img/main_1.jpeg') }}" alt="User Avatar" class="user-avatar">
+                <div class="comment-content">
+                    <span class="username">Ahmad Basheer</span>
+                    <span class="comment-time">منذ 5 دقائق</span>
+                    <p class="comment-text">هذا هو نص التعليق.</p>
+                </div>
+            </div>
+            <div class="comment">
+                <img src="{{ asset('mainassets/img/main_1.jpeg') }}" alt="User Avatar" class="user-avatar">
+                <div class="comment-content">
+                    <span class="username">Ahmad Basheer</span>
+                    <span class="comment-time">منذ 5 دقائق</span>
+                    <p class="comment-text">هذا هو نص التعليق.</p>
+                </div>
+            </div>
+          {{-- <div class="comment">
             <span>User</span>
             <p>This is a comment.</p>
-          </div>
+          </div> --}}
 
-          <div class="add-comment-section">
-                <img src="{{ asset('mainassets/img/main_1.jpeg') }}" alt="User Avatar" class="user-avatar"> <!-- صورة المستخدم -->
-                <input type="text" class="comment-input" placeholder="Add a comment..." />
-                <button class="send-comment-button">
-                    <i class="fa fa-paper-plane"></i> <!-- أيقونة الإرسال -->
-                </button>
-          </div>
+            <div class="add-comment-section">
+                    <img src="{{ asset('mainassets/img/main_1.jpeg') }}" alt="User Avatar" class="user-avatar"> <!-- صورة المستخدم -->
+                    <input type="text" class="comment-input" placeholder="اكتب تعليق..." />
+                    <button class="send-comment-button">
+                        <i class="fa fa-paper-plane"></i> <!-- أيقونة الإرسال -->
+                    </button>
+            </div>
         </div>
 
       </div>
 
       <div class="posts-container">
             <div class="related-posts">
-                <h3>Related Posts</h3>
+                <h3>منشورات مشابهة</h3>
                 <!-- Add related posts here -->
             </div>
       </div>
