@@ -7,6 +7,7 @@
     <title>لمسات زخرفية | الصفحة الرئيسية</title>
 
     <link rel="stylesheet" href="{{ asset('mainassets/css/index.css') }}">
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600&display=swap" rel="stylesheet">
 
 </head>
 <body>
@@ -14,13 +15,13 @@
     <nav>
         <ul class="list">
             <li>
-                <a href="">الرئيسية</a>
+                <a href="">Main</a>
             </li>
             <li>
-                <a href="">تسجيل</a>
+                <a href="">Register</a>
             </li>
             <li>
-                <a href="">تسجيل الدخول</a>
+                <a href="">Log in </a>
             </li>
         </ul>
 
@@ -104,9 +105,13 @@
                  مثل "عشاء الدجاج السهل"<br>
                  وشاهد ما ستجده.</p>
         </div>
+        
         <div class="c4_img">
-            {{-- <div class="c4_img1"><img src="{{ asset('mainassets/img/d2.jpg') }}" alt=""></div>        </div> --}}
-        <div>
+            <div class="c4_img1">
+                <img src="{{ asset('mainassets/img/img3.jpg') }}" alt="">
+            </div>
+        </div>
+
     </div>
 
     <script src="{{ asset('mainassets/js/index.js') }}"></script>

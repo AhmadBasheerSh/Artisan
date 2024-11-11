@@ -3,6 +3,7 @@
 @import url('https://fonts.googleapis.com/css2?family=Lemonada:wght@300..700&display=swap');
 
 
+
 body{
     direction: ltr;
     background: #f8f9fa;
@@ -33,7 +34,7 @@ nav{
 
 ul{
     list-style: none;
-    width: 250px;
+    width: 265px;
     display: flex;
     justify-content: space-between;
 }
@@ -46,7 +47,7 @@ ul{
 }
 
 .logo {
-    color: gold;
+    color: #f06363;
     font-weight: bold;
     font-size: 48px;
 }
@@ -518,7 +519,7 @@ img{
     display: flex;
     justify-content: space-around;
     align-items: center;
-    background: #ecde8c;
+    background: #e5cd1173;
     height: 650px;
     width: 100%;
 }
@@ -629,14 +630,45 @@ img{
     display: flex;
     justify-content: space-between;
     align-items: center;
-    background: #9ef09e;
+    background: #8ef0ff8a;
     height: 650px;
     width: 100%;
 }
 
 .c4_img{
     position: relative;
-    width: 40%;
-    height: 100%;
-    background-color: red;
+    width: 450px;
+    height: 585px;
 }
+    
+    
+
+
+
+
+
+
+
+
+
+/* Abdelkareem */
+nav {
+    background-color: #ebb7e5;
+    color: white;
+    padding: 0px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+}
+
+.contaner, .contaner2, .contaner3, .contaner4 {
+    max-width: 1400px;
+    margin: 20px auto;
+    padding: 20px;
+    text-align: center;
+    border-radius: 10px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    
+}
+
