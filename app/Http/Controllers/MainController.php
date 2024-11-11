@@ -14,4 +14,11 @@ class MainController extends Controller
         return view('index');
     }
 
+    public function register() {
+        return view('auth.register');
+    }
+
+    public function login() {
+        return view('auth.login');
+    }
 }

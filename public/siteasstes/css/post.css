@@ -185,6 +185,34 @@ body {
     flex: 1;
   }
 
+  .comment-actions {
+    display: flex;
+    gap: 10px;
+    margin-top: 10px;
+}
+
+    .comment-actions button {
+        background-color: transparent;
+        border: none;
+        color: #555;
+        cursor: pointer;
+        font-size: 14px;
+        display: flex;
+        align-items: center;
+        gap: 5px;
+    }
+
+    .comment-actions .like-button:hover,
+    .comment-actions .reply-button:hover {
+        color: #007bff;
+    }
+
+    .replies {
+        margin-top: 10px;
+        padding-left: 20px;
+        border-left: 2px solid #e0e0e0;
+    }
+
   /* صورة المستخدم */
 .user-avatar {
     width: 40px;
@@ -211,17 +239,37 @@ body {
     }
 
   /* حقل إدخال التعليق */
-.comment-input {
-    flex: 1;
-    padding: 8px 12px;
-    border: none;
-    border-radius: 20px;
-    background-color: #fff;
-    outline: none;
-    font-size: 14px;
-    color: #333;
-    transition: box-shadow 0.3s ease;
-  }
+  .comment-input {
+    font-size: 16px;
+    padding: 10px 40px 10px 10px;
+    width: 100%;
+    min-height: 40px;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+    direction: rtl; /* تحديد اتجاه النص من اليمين لليسار */
+    text-align: right; /* محاذاة النص لليمين */
+    box-sizing: border-box;
+}
+
+  /* تخصيص موضع القائمة لتظهر على الشمال */
+  .emojionearea .emojionearea-picker {
+        left: 0 !important; /* تظهر القائمة على الشمال */
+        right: auto !important; /* إزالة أي تأثيرات سابقة على اليمين */
+    }
+
+    /* تخصيص مكان الأيقونة لجعلها في الجهة اليسرى */
+    .emojionearea .emojionearea-button {
+        right: auto !important; /* إزالة الأيقونة من الجهة اليمنى */
+        left: 0 !important; /* وضع الأيقونة على الشمال */
+    }
+
+    /* تخصيص الإيموجي نفسه */
+    .emojionearea .emojionearea-editor {
+        direction: rtl;
+        text-align: right;
+    }
+
+
 
   /* تأثير عند التركيز */
   .comment-input:focus {
@@ -308,3 +356,32 @@ body {
   .back-button button:hover {
     background-color: #f4f4f4;
   }
+
+  .related-posts {
+    display: flex;
+    gap: 15px;
+    flex-wrap: wrap;
+}
+
+.related-post {
+    width: 140px;
+    text-align: center;
+}
+
+.related-post img {
+    width: 100%;
+    border-radius: 8px;
+    margin-bottom: 5px;
+}
+
+.related-post-title {
+    font-size: 14px;
+    color: #333;
+    font-weight: bold;
+    margin: 5px 0;
+}
+
+.related-post-author, .related-post-date {
+    font-size: 12px;
+    color: #666;
+}

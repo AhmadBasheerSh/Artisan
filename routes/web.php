@@ -14,7 +14,7 @@ Route::get('/posts', [SiteController::class, 'index'])->name('posts');
 Route::get('/post', [SiteController::class, 'post'])->name('post');
 
 // Authentication routes
-// Auth::routes();
+Auth::routes();
 Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name('home');
 
 // Custom login and registration routes
