@@ -1,98 +1,173 @@
-/* إعدادات عامة */
-body {
-    direction: rtl;
-    font-family: 'Roboto', sans-serif;
-    background-color: #f0f2f5; /* خلفية رمادية فاتحة مشابهة لـ Pinterest */
-    color: #333; /* اللون الرئيسي للنص */
-    margin: 0;
-    padding: 0;
-  }
 
-  /* حاوية المنشور */
-  .post-container {
-    width: 60%;
-    max-width: 800px;
-    margin: 20px auto;
-    background-color: #fff;
-    border-radius: 16px;
-    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
-    overflow: hidden;
-  }
+    /* إعدادات عامة */
+    body {
+        direction: rtl;
+        font-family: 'Roboto', sans-serif;
+        background-color: #f0f2f5; /* خلفية رمادية فاتحة  */
+        color: #333; /* اللون الرئيسي للنص */
+        margin: 0;
+        padding: 0;
+    }
 
-  .post-image img {
-    width: 100%;
-    height: auto;
-  }
+    /* حاوية المنشور */
+    .post-container {
+        width: 60%;
+        max-width: 800px;
+        margin: 20px auto;
+        background-color: #fff;
+        border-radius: 16px;
+        box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+        overflow: hidden;
+    }
 
-  /* تفاصيل المنشور */
-  .post-details {
-    padding: 16px 24px;
-  }
+    #postCarousel {
+        position: relative; /* التأكد من أن الحاوية الرئيسية تكون نسبية */
+    }
 
-  .post-details h2 {
-    font-size: 24px;
-    font-weight: bold;
-    color: #333;
-    margin: 0 0 10px;
-  }
+    .carousel-counter {
+        position: absolute;
+        top: 10px;
+        left: 10px;
+        background: rgba(0, 0, 0, 0.5); /* خلفية داكنة شبه شفافة */
+        color: white;
+        padding: 5px 10px;
+        border-radius: 5px;
+        font-size: 16px;
+        z-index: 9999;
+    }
 
-  .author-info {
-    display: flex;
-    align-items: center;
-    gap: 12px;
-    margin-top: 8px;
-  }
+    .post-image img {
+        width: 100%;
+        height: auto;
+    }
 
-  .author-info img {
-    width: 48px;
-    height: 48px;
-    border-radius: 50%;
-    object-fit: cover;
-  }
+    .post-image {
+        margin: 0 auto;
+    }
 
-  .author-info span {
-    font-weight: 600;
-    color: #333;
-  }
+    .carousel-inner img {
+        width: 100%;
+        height: auto;
+        border-radius: 8px;
+    }
 
-  .follow-button {
-    background-color: #e60023;
-    color: #fff;
-    border: none;
-    border-radius: 20px;
-    padding: 8px 16px;
-    font-weight: bold;
-    cursor: pointer;
-    transition: background-color 0.3s ease;
-    margin-left: auto; /* لجعل الزر بجانب اسم المؤلف */
-  }
+    .carousel-item img {
+        width: 100%;        /* اجعل الصورة تأخذ عرض العنصر الكامل */
+        height: auto;       /* اجعل الارتفاع يتناسب مع العرض تلقائيًا */
+        object-fit: cover;  /* يضبط ملاءمة الصورة بحيث تملأ المساحة المحددة */
+    }
 
-  .follow-button:hover {
-    background-color: #cc001f;
-  }
+    .carousel-item {
+        height: 500px; /* يمكنك تعديل هذا الارتفاع حسب الحاجة */
+    }
+
+    .carousel-item img {
+        height: 100%; /* تأكد من أن الصور تأخذ الارتفاع المحدد */
+        object-fit: cover;
+    }
+
+
+    /* تفاصيل المنشور */
+    .post-details {
+        padding: 16px 24px;
+    }
+
+    .post-details h2 {
+        font-size: 24px;
+        font-weight: bold;
+        color: #333;
+        margin-top: 15px;
+    }
+
+    .author-info {
+        display: flex;
+        align-items: center;
+        justify-content: space-between;
+        gap: 10px;
+        /* margin-top: 8px; */
+    }
+
+    .author-info img {
+        width: 50px;
+        height: 50px;
+        border-radius: 50%;
+        object-fit: cover;
+    }
+
+    .author-info span {
+        font-weight: 600;
+        color: #333;
+    }
+
+    .author-details {
+        display: flex;
+        flex-direction: column; /* ترتيب العناصر بشكل عمودي */
+    }
+
+    .author-name {
+        font-weight: bold; /* لجعل الاسم بخط عريض */
+    }
+
+    .post-time {
+        color: #666; /* لون خفيف للوقت */
+        font-size: 12px; /* حجم أصغر للوقت */
+    }
+
+    .follow-button {
+        background-color: #e60023;
+        color: #fff;
+        border: none;
+        border-radius: 20px;
+        padding: 8px 16px;
+        font-weight: bold;
+        cursor: pointer;
+        transition: background-color 0.3s ease;
+        margin-left: auto; /* لجعل الزر بجانب اسم المؤلف */
+    }
+
+    .follow-button:hover {
+        background-color: #cc001f;
+    }
 
   /* أزرار التفاعل */
-  .post-actions {
-    display: flex;
-    gap: 10px;
-    margin-top: 16px;
-  }
+    .post-actions {
+        display: flex;
+        gap: 10px;
+        margin-top: 16px;
+    }
 
-  .post-actions button {
-    background-color: #e60023;
-    color: #fff;
-    border: none;
-    border-radius: 50%;
-    width: 40px;
-    height: 40px;
-    font-size: 16px;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    cursor: pointer;
-    transition: background-color 0.3s ease;
-    position: relative;
-  }
+    .post-actions button {
+        display: flex;
+        align-items: center;
+        gap: 5px; /* المسافة بين الأيقونة والنص */
+        padding: 8px 12px;
+        border: none;
+        border-radius: 5px;
+        background-color: #ffffff;
+        cursor: pointer;
+        font-size: 16px;
+        transition: background-color 0.3s ease;
+    }
+
+    .action-btn i {
+        font-size: 18px; /* حجم الأيقونة */
+    }
+
+    .save-btn i {
+        color: #f39c12; /* لون دافئ مثل البرتقالي لحفظ */
+    }
+
+    .share-btn i {
+        color: #3498db; /* لون هادئ مثل الأزرق للمشاركة */
+    }
+
+    .save-btn:hover {
+        background-color: #ffe0b3; /* تغيير لون الخلفية عند المرور */
+    }
+
+    .share-btn:hover {
+        background-color: #b3d9ff; /* تغيير لون الخلفية عند المرور */
+    }
 
     .follow-btn {
         background-color: #e60023;
@@ -111,119 +186,143 @@ body {
     }
 
   /* أيقونة القلب */
-.like-button {
-    display: flex;
-    align-items: center;
-    gap: 8px; /* مسافة بين الأيقونة والعدد */
-    background-color: transparent; /* خلفية شفافة لأيقونة القلب */
-    color: #e60023; /* لون القلب */
-  }
+    .like-button {
+        /* display: flex; */
+        align-items: center;
+        font-size: 20px;
+        gap: 8px; /* مسافة بين الأيقونة والعدد */
+        background-color: transparent; /* خلفية شفافة لأيقونة القلب */
+        color: #e60023; /* لون القلب */
+        margin-left: 15px;
+        display: block;
+    }
 
-  .post-actions button:hover {
-    background-color: #cc001f;
-  }
+    .like-count {
+        font-size: 16px;
+        font-weight: bold;
+        color: #000000;
+    }
 
   /* وصف المنشور */
-  .post-description {
-    font-size: 16px;
-    color: #555;
-    line-height: 1.6;
-    margin-top: 16px;
-  }
+    .post-description {
+        font-size: 16px;
+        color: #555;
+        line-height: 1.6;
+        margin-top: 16px;
+    }
 
   /* قسم التعليقات */
-  .add-comment-section {
-    display: flex;
-    align-items: center;
-    gap: 10px;
-    margin-top: 16px;
-    padding: 8px 16px;
-    background-color: #f4f4f4; /* خلفية خفيفة */
-    border-top-left-radius: 24px; /* زوايا مدورة */
-    border-top-right-radius: 24px; /* زوايا مدورة */
-  }
+    .add-comment-section {
+        display: flex;
+        align-items: center;
+        gap: 10px;
+        margin-top: 16px;
+        padding: 8px 16px;
+        background-color: #f4f4f4; /* خلفية خفيفة */
+        border-top-left-radius: 24px; /* زوايا مدورة */
+        border-top-right-radius: 24px; /* زوايا مدورة */
+    }
 
-  .comments-section {
-    margin-top: 5px;
-    border-top: 1px solid #ddd;
-    padding-top: 10px;
-  }
+    .comments-section {
+        margin-top: 5px;
+        border-top: 1px solid #ddd;
+    }
 
-  .comments-section h3 {
-    margin-right: 5px;
-    font-size: 18px;
-    font-weight: bold;
-    color: #333;
-  }
+    .comments-section h3 {
+        margin-top: 5px;
+        margin-right: 5px;
+        font-size: 18px;
+        font-weight: bold;
+        color: #333;
+    }
 
-  .comment {
-    margin-right: 10px;
-    display: flex;
-    align-items: start;
-    gap: 10px;
-    margin-top: 10px;
-  }
+    .comment {
+        margin-right: 10px;
+        display: flex;
+        align-items: start;
+        gap: 10px;
+        margin-top: 10px;
+    }
 
-  .comment img {
-    width: 32px;
-    height: 32px;
-    border-radius: 50%;
-    object-fit: cover;
-  }
+    .comment img {
+        width: 35px;
+        height: 35px;
+        border-radius: 50%;
+        object-fit: cover;
+    }
 
-  .comment span {
-    font-weight: bold;
-    color: #111;
-  }
+    .comment p {
+        margin: 0;
+        margin-right: 10px;
+        color: #000000;
+    }
 
-  .comment p {
-    margin: 0;
-    color: #555;
-  }
+    .comment-content {
+        flex: 1;
+    }
 
-  .comment-content {
-    flex: 1;
-  }
-
-  .comment-actions {
-    display: flex;
-    gap: 10px;
-    margin-top: 10px;
-}
+    .comment-actions {
+        display: flex;
+        gap: 10px;
+        margin-top: 4px;
+        margin-right: 10px;
+    }
 
     .comment-actions button {
         background-color: transparent;
         border: none;
         color: #555;
         cursor: pointer;
-        font-size: 14px;
+        font-size: 10px;
         display: flex;
         align-items: center;
         gap: 5px;
     }
 
-    .comment-actions .like-button:hover,
+    .comment-actions .like-button:hover {
+        color: #ff0000;
+    }
+
     .comment-actions .reply-button:hover {
-        color: #007bff;
+        color: #000000;
     }
 
     .replies {
+        display: flex;
         margin-top: 10px;
         padding-left: 20px;
         border-left: 2px solid #e0e0e0;
+        margin-right: 25px;
+        gap: 10px;
+    }
+
+    .reply {
+        display: flex;
+        gap: 10px;
+    }
+
+    .re-author-name{
+        font-weight: bold;
+        font-size: 14px;
+    }
+
+    .reply-text{
+        margin: 5px 0 0;
+        color: #444;
+        font-size: 13px;
     }
 
   /* صورة المستخدم */
-.user-avatar {
-    width: 40px;
-    height: 40px;
-    border-radius: 50%;
-    object-fit: cover;
-  }
+    .user-avatar {
+        width: 40px;
+        height: 40px;
+        border-radius: 50%;
+        object-fit: cover;
+    }
 
-  .username {
-    font-weight: bold;
-    color: #333;
+    .username {
+        font-weight: bold;
+        color: #333;
     }
 
     .comment-time {
@@ -236,6 +335,7 @@ body {
     .comment-text {
         margin: 5px 0 0;
         color: #444;
+        font-size: 14px;
     }
 
   /* حقل إدخال التعليق */
@@ -325,63 +425,100 @@ body {
     box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
   }
 
-  /* إعدادات زر الرجوع */
-.back-button {
-    position: fixed; /* يظل الزر ثابتًا في أعلى الصفحة */
-    top: 20px;
-    left: 20px;
-    z-index: 1000; /* فوق جميع العناصر الأخرى */
+    /* إعدادات زر الرجوع */
+    .back-button {
+        position: fixed; /* يظل الزر ثابتًا في أعلى الصفحة */
+        top: 20px;
+        left: 20px;
+        z-index: 1000; /* فوق جميع العناصر الأخرى */
+    }
+
+    .back-button button {
+        background-color: #ffffff;
+        color: #333;
+        border: none;
+        border-radius: 50%;
+        width: 40px;
+        height: 40px;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        cursor: pointer;
+        box-shadow: 0 2px 4px rgba(0, 0, 0, 0.2);
+        transition: background-color 0.3s ease;
+    }
+
+    .back-button button i {
+        font-size: 18px;
+        color: #e60023; /* لون السهم الأحمر مثل Pinterest */
+    }
+
+    .back-button button:hover {
+        background-color: #f4f4f4;
+    }
+
+  .related-post {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(250px, 1fr));
+    grid-gap: 20px;
+    padding: 20px;
+    max-width: 1300px;
+    margin: 0 auto;
   }
 
-  .back-button button {
-    background-color: #ffffff;
-    color: #333;
-    border: none;
-    border-radius: 50%;
-    width: 40px;
-    height: 40px;
+  .post {
+    background-color: #fff;
+    padding: 15px;
+    border-radius: 10px;
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+    overflow: hidden;
+}
+
+.post .content {
+    margin-top: 10px;
+}
+
+.post .content h3 {
+    font-size: 18px;
+    margin: 0;
+}
+
+.post .content p {
+    font-size: 14px;
+    color: #555;
+}
+
+.post .post_img {
+    width: 100%;
+    height: auto;
+    border-radius: 5px;
+}
+
+.content {
+    margin-top: 10px;
+}
+
+.user-info {
     display: flex;
     align-items: center;
-    justify-content: center;
-    cursor: pointer;
-    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.2);
-    transition: background-color 0.3s ease;
-  }
+    margin-bottom: 10px;
+}
 
-  .back-button button i {
-    font-size: 18px;
-    color: #e60023; /* لون السهم الأحمر مثل Pinterest */
-  }
+.user-image {
+    width: 50px;
+    height: 50px;
+    border-radius: 50%;
+    margin-right: 5px;
+    margin-left: 5px;
+    object-fit: cover;
+}
 
-  .back-button button:hover {
-    background-color: #f4f4f4;
-  }
-
-  .related-posts {
+.user-details {
     display: flex;
-    gap: 15px;
-    flex-wrap: wrap;
+    flex-direction: column;
 }
 
-.related-post {
-    width: 140px;
-    text-align: center;
-}
-
-.related-post img {
-    width: 100%;
-    border-radius: 8px;
-    margin-bottom: 5px;
-}
-
-.related-post-title {
-    font-size: 14px;
-    color: #333;
+.username {
     font-weight: bold;
-    margin: 5px 0;
-}
-
-.related-post-author, .related-post-date {
-    font-size: 12px;
-    color: #666;
+    margin: 0;
 }
