@@ -181,3 +181,18 @@ form .page .btns button.next{
   display: block;
   color: #fff;
 }
+
+.field {
+    position: relative;
+}
+
+.field .input-field + .error-message {
+    display: block;
+    color: red;
+    font-weight: bold;
+    font-size: 0.9em;
+    margin-top: 5px;
+    position: absolute;
+    top: 100%; /* يجعل الرسالة تظهر أسفل حقل الإدخال */
+    left: 0;
+}

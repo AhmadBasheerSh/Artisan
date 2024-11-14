@@ -20,7 +20,9 @@ return new class extends Migration
             $table->string('image')->nullable();
             $table->text('story')->nullable();
             $table->date('birthday')->nullable();
-            $table->string('country');
+            $table->string('address');
+            $table->enum('gender', ['male', 'female'])->nullable();
+            $table->integer('phone');
             $table->timestamp('email_verified_at')->nullable();
             $table->string('password');
             $table->rememberToken();
