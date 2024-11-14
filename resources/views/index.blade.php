@@ -131,7 +131,7 @@
             <img src="{{ asset('mainassets/img/14c5df58bb15af3a09e9a57879db22e5.jpg') }}" alt="صورة 1">
             <img src="{{ asset('mainassets/img/91055765bb5c6f1e2a5cb64343222194.jpg') }}" alt="صورة 2">
             <img src="{{ asset('mainassets/img/0acc4c960c4f66f22d312d9c80437908.jpg') }}" alt="صورة 3">
-            <img src="{{ asset('mainassets/img/6f48930e351b9216edbe689b699a1e0d.jpg') }}" alt="صورة 4">
+            <img src="{{ asset('mainassets/img/cdd6ed4fbcc7458d08e0cc97e0084d16.jpg') }}" alt="صورة 4">
             <img src="{{ asset('mainassets/img/a7cb27e7ad53cf8545b9ac74500b5b53.jpg') }}" alt="صورة 5">
             <img src="{{ asset('mainassets/img/62d915f8cd6bf17c5aeb8636e252b1a5.jpg') }}" alt="صورة 6">
             <img src="{{ asset('mainassets/img/6fa3b7587c4051097287677c143a5ac9.jpg') }}" alt="صورة 7">
