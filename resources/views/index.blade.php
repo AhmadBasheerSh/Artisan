@@ -72,8 +72,9 @@
 
 
         <div>
-            <button class="cute-btn">تسجيل</button>
-            <button class="cute-btn">تسجيل الدخول</button>
+            
+            <button class="cute-btn"><a href="register">تسجيل</a></button>
+            <button class="cute-btn"><a href="login">تسجيل الدخول</a></button>
         </div>
     </nav>
 

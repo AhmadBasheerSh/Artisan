@@ -59,7 +59,7 @@
                     </div>
                     <div class="field">
                         <div class="label">Email Address</div>
-                        <input  name="email"  id="email" placeholder="Last Name" type="text"
+                        <input  name="email"  id="email" placeholder="Email" type="text"
                         required="" class="input-field">
                         <span class="error-message" style="color: red; display: none;">This field is required</span>
                     </div>
