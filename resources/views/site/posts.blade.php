@@ -87,7 +87,7 @@
             </div>
         </div>
         <div class="gallery-item">
-            <img src="{{asset('mainassets/img/6b42776ef1760bd7f2246b749d68b325.jpg')}}" alt="صورة 1">
+            <img src="{{asset('mainassets/img/d09a3d70a79f154b8ede9d7fdfc23e23.jpg')}}" alt="صورة 1">
             <div class="caption">
                 <a href="#">اسم الناشر 1</a>
                 <p>وصف للصورة 1</p>
@@ -139,7 +139,7 @@
             </div>
         </div>
         <div class="gallery-item">
-            <img src="{{asset('mainassets/img/30278815c4bfb8e219f3f17da5e868e7.jpg')}}" alt="صورة 1">
+            <img src="{{asset('mainassets/img/6b42776ef1760bd7f2246b749d68b325.jpg')}}" alt="صورة 1">
             <div class="caption">
                 <a href="#">اسم الناشر 1</a>
                 <p>وصف للصورة 1</p>
