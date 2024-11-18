@@ -162,7 +162,7 @@ body {
     text-align: right;
     transition: transform 0.3s, box-shadow 0.3s;
     direction: rtl;
-    /* margin-bottom: auto; */
+    margin-bottom: auto;
 }
 
 .gallery-item:hover {
