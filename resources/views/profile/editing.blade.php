@@ -54,15 +54,15 @@
                             <div class="card-body">
                                 <div class="form-group">
                                     <label class="form-label">اسم المستخدم</label>
-                                    <input type="text" class="form-control mb-1" value="">
+                                    <input type="text" class="form-control mb-1" placeholder="أ ب ت">
                                 </div>
                                 <div class="form-group">
                                     <label class="form-label">الاسم</label>
-                                    <input type="text" class="form-control" value="">
+                                    <input type="text" class="form-control" placeholder="أ ب ت ث ج">
                                 </div>
                                 <div class="form-group">
                                     <label class="form-label">الايميل</label>
-                                    <input type="text" class="form-control mb-1" value="someone@mail.com">
+                                    <input type="text" class="form-control mb-1" placeholder="someone@mail.com">
                                     <div class="alert alert-warning mt-3">
                                         .لم يتم تأكيد بريدك الإلكتروني. يرجى التحقق من صندوق الوارد الخاص بك<br>
                                         <a href="javascript:void(0)">إعادة إرسال التأكيد</a>
@@ -70,7 +70,7 @@
                                 </div>
                                 <div class="form-group">
                                     <label class="form-label">الشركة</label>
-                                    <input type="text" class="form-control" value="Company Ltd." >
+                                    <input type="text" class="form-control" placeholder="Company Ltd." >
                                 </div>
                             </div>
                         </div>
@@ -95,11 +95,11 @@
                                 <div class="form-group">
                                     <label class="form-label">السيرة الذاتية</label>
                                     <textarea class="form-control"
-                                        rows="5">Lorem ipsum dolor sit amet, consectetur adipiscing elit. Mauris nunc arcu, dignissim si    t amet sollicitudin iaculis, vehicula id urna. Sed luctus urna nunc. Donec fermentum, magna sit amet rutrum pretium, turpis dolor molestie diam, ut lacinia diam risus eleifend sapien. Curabitur ac nibh nulla. Maecenas nec augue placerat, viverra tellus non, pulvinar risus.</textarea>
+                                        rows="5">العميل مهم جدًا، العميل سيتبعه العميل. موريس الآن ينحني، الكرامة تكون amet sollicitudin aculis، المركبات التي تجر. لكن جرة الحداد الآن. حتى يختمر، ليكن ثمن الجمال عظيمًا، ويكون ألم الديم المزعج عظيمًا، حتى يكون الديم اللاسينيا مليئًا بالضحك والحكمة. كورابيتور و نيبه لا. لا يستثمر Maecenas في الدعاية ولا في المتسلقين ولا في وسادة الضحك.</textarea>
                                 </div>
                                 <div class="form-group">
                                     <label class="form-label">تاريخ الميلاد</label>
-                                    <input type="text" class="form-control" value="May 3, 1995">
+                                    <input type="text" class="form-control" placeholder="May 3, 1995">
                                 </div>
                                 <div class="form-group">
                                     <label class="form-label">الدولة</label>
@@ -122,7 +122,7 @@
                                 <h6 class="mb-4">التواصل</h6>
                                 <div class="form-group">
                                     <label class="form-label">رقم الجوال</label>
-                                    <input type="text" class="form-control" value="+0 (123) 456 7891">
+                                    <input type="text" class="form-control" placeholder="+0 (123) 456 7891">
                                 </div>
                                 <div class="form-group">
                                     <label class="form-label">الموقع الالكتروني</label>
@@ -134,23 +134,23 @@
                             <div class="card-body pb-2">
                                 <div class="form-group">
                                     <label class="form-label">Twitter</label>
-                                    <input type="text" class="form-control" value="https://twitter.com/user">
+                                    <input type="text" class="form-control" placeholder="https://twitter.com/user">
                                 </div>
                                 <div class="form-group">
                                     <label class="form-label">Facebook</label>
-                                    <input type="text" class="form-control" value="https://www.facebook.com/user">
+                                    <input type="text" class="form-control" placeholder="https://www.facebook.com/user">
                                 </div>
                                 <div class="form-group">
                                     <label class="form-label">Google+</label>
-                                    <input type="text" class="form-control" value>
+                                    <input type="text" class="form-control" placeholder = "https://www.google.account.com/user">
                                 </div>
                                 <div class="form-group">
                                     <label class="form-label">LinkedIn</label>
-                                    <input type="text" class="form-control" value>
+                                    <input type="text" class="form-control" placeholder="https://www.LinkedIn.com/user">
                                 </div>
                                 <div class="form-group">
                                     <label class="form-label">Instagram</label>
-                                    <input type="text" class="form-control" value="https://www.instagram.com/user">
+                                    <input type="text" class="form-control" placeholder="https://www.instagram.com/user">
                                 </div>
                             </div>
                         </div>
