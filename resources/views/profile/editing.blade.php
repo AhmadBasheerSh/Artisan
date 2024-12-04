@@ -15,24 +15,24 @@
 <body>
     <div class="container light-style flex-grow-1 container-p-y">
         <h4 class="font-weight-bold py-3 mb-4">
-            Account settings
+            إعدادات الحساب
         </h4>
         <div class="card overflow-hidden">
             <div class="row no-gutters row-bordered row-border-light">
                 <div class="col-md-3 pt-0">
                     <div class="list-group list-group-flush account-settings-links">
                         <a class="list-group-item list-group-item-action active" data-toggle="list"
-                            href="#account-general">General</a>
+                            href="#account-general">عام</a>
                         <a class="list-group-item list-group-item-action" data-toggle="list"
-                            href="#account-change-password">Change password</a>
+                            href="#account-change-password">تغيير كلمة المرور</a>
                         <a class="list-group-item list-group-item-action" data-toggle="list"
-                            href="#account-info">Info</a>
+                            href="#account-info">المعلومات</a>
                         <a class="list-group-item list-group-item-action" data-toggle="list"
-                            href="#account-social-links">Social links</a>
+                            href="#account-social-links">الروابط الاجتماعية</a>
                         <a class="list-group-item list-group-item-action" data-toggle="list"
-                            href="#account-connections">Connections</a>
+                            href="#account-connections">وسائل التواصل</a>
                         <a class="list-group-item list-group-item-action" data-toggle="list"
-                            href="#account-notifications">Notifications</a>
+                            href="#account-notifications">الإشعارات</a>
                     </div>
                 </div>
                 <div class="col-md-9">
@@ -43,49 +43,49 @@
                                     class="d-block ui-w-80">
                                 <div class="media-body ml-4">
                                     <label class="btn btn-outline-primary">
-                                        Upload new photo
+                                        رفع صورة جديدة
                                         <input type="file" class="account-settings-fileinput">
                                     </label> &nbsp;
-                                    <button type="button" class="btn btn-default md-btn-flat">Reset</button>
-                                    <div class="text-light small mt-1">Allowed JPG, GIF or PNG. Max size of 800K</div>
+                                    <button type="button" class="btn btn-default md-btn-flat">إعادة تعيين</button>
+                                    <div class="text-light small mt-1">الصور المسموحة بامتداد JPG, GIF او PNG. الحجم الأقصى للصورة 800 كيلوبايت</div>
                                 </div>
                             </div>
                             <hr class="border-light m-0">
                             <div class="card-body">
                                 <div class="form-group">
-                                    <label class="form-label">Username</label>
-                                    <input type="text" class="form-control mb-1" value="nmaxwell">
+                                    <label class="form-label">اسم المستخدم</label>
+                                    <input type="text" class="form-control mb-1" value="">
                                 </div>
                                 <div class="form-group">
-                                    <label class="form-label">Name</label>
-                                    <input type="text" class="form-control" value="Nelle Maxwell">
+                                    <label class="form-label">الاسم</label>
+                                    <input type="text" class="form-control" value="">
                                 </div>
                                 <div class="form-group">
-                                    <label class="form-label">E-mail</label>
-                                    <input type="text" class="form-control mb-1" value="nmaxwell@mail.com">
+                                    <label class="form-label">الايميل</label>
+                                    <input type="text" class="form-control mb-1" value="someone@mail.com">
                                     <div class="alert alert-warning mt-3">
-                                        Your email is not confirmed. Please check your inbox.<br>
-                                        <a href="javascript:void(0)">Resend confirmation</a>
+                                        .لم يتم تأكيد بريدك الإلكتروني. يرجى التحقق من صندوق الوارد الخاص بك<br>
+                                        <a href="javascript:void(0)">إعادة إرسال التأكيد</a>
                                     </div>
                                 </div>
                                 <div class="form-group">
-                                    <label class="form-label">Company</label>
-                                    <input type="text" class="form-control" value="Company Ltd.">
+                                    <label class="form-label">الشركة</label>
+                                    <input type="text" class="form-control" value="Company Ltd." >
                                 </div>
                             </div>
                         </div>
                         <div class="tab-pane fade" id="account-change-password">
                             <div class="card-body pb-2">
                                 <div class="form-group">
-                                    <label class="form-label">Current password</label>
+                                    <label class="form-label">كلمة المرور الحالية</label>
                                     <input type="password" class="form-control">
                                 </div>
                                 <div class="form-group">
-                                    <label class="form-label">New password</label>
+                                    <label class="form-label">كلمة المرور الجديدة</label>
                                     <input type="password" class="form-control">
                                 </div>
                                 <div class="form-group">
-                                    <label class="form-label">Repeat new password</label>
+                                    <label class="form-label">تأكيد كلمة المرور الجديدة</label>
                                     <input type="password" class="form-control">
                                 </div>
                             </div>
@@ -93,34 +93,39 @@
                         <div class="tab-pane fade" id="account-info">
                             <div class="card-body pb-2">
                                 <div class="form-group">
-                                    <label class="form-label">Bio</label>
+                                    <label class="form-label">السيرة الذاتية</label>
                                     <textarea class="form-control"
                                         rows="5">Lorem ipsum dolor sit amet, consectetur adipiscing elit. Mauris nunc arcu, dignissim sit amet sollicitudin iaculis, vehicula id urna. Sed luctus urna nunc. Donec fermentum, magna sit amet rutrum pretium, turpis dolor molestie diam, ut lacinia diam risus eleifend sapien. Curabitur ac nibh nulla. Maecenas nec augue placerat, viverra tellus non, pulvinar risus.</textarea>
                                 </div>
                                 <div class="form-group">
-                                    <label class="form-label">Birthday</label>
+                                    <label class="form-label">تاريخ الميلاد</label>
                                     <input type="text" class="form-control" value="May 3, 1995">
                                 </div>
                                 <div class="form-group">
-                                    <label class="form-label">Country</label>
+                                    <label class="form-label">الدولة</label>
                                     <select class="custom-select">
-                                        <option>USA</option>
-                                        <option selected>Canada</option>
-                                        <option>UK</option>
-                                        <option>Germany</option>
-                                        <option>France</option>
+                                        <option>الولايات المتحدة الأمريكية</option>
+                                        <option selected>كندا</option>
+                                        <option>المملكة المتحدة</option>
+                                        <option>ألمانيا</option>
+                                        <option>فرنسا</option>
+                                        <option>قطر</option>
+                                        <option>مصر</option>
+                                        <option>السعودية</option>
+                                        <option>الأراضي الفلسطينية</option>
+                                        
                                     </select>
                                 </div>
                             </div>
                             <hr class="border-light m-0">
                             <div class="card-body pb-2">
-                                <h6 class="mb-4">Contacts</h6>
+                                <h6 class="mb-4">التواصل</h6>
                                 <div class="form-group">
-                                    <label class="form-label">Phone</label>
+                                    <label class="form-label">رقم الجوال</label>
                                     <input type="text" class="form-control" value="+0 (123) 456 7891">
                                 </div>
                                 <div class="form-group">
-                                    <label class="form-label">Website</label>
+                                    <label class="form-label">الموقع الالكتروني</label>
                                     <input type="text" class="form-control" value>
                                 </div>
                             </div>
@@ -151,34 +156,34 @@
                         </div>
                         <div class="tab-pane fade" id="account-connections">
                             <div class="card-body">
-                                <button type="button" class="btn btn-twitter">Connect to
-                                    <strong>Twitter</strong></button>
+                                <button type="button" class="btn btn-twitter">الاتصال مع
+                                    <strong>تويتر</strong></button>
                             </div>
                             <hr class="border-light m-0">
                             <div class="card-body">
                                 <h5 class="mb-2">
                                     <a href="javascript:void(0)" class="float-right text-muted text-tiny"><i
-                                            class="ion ion-md-close"></i> Remove</a>
+                                            class="ion ion-md-close"></i> إزالة</a>
                                     <i class="ion ion-logo-google text-google"></i>
-                                    You are connected to Google:
+                                    أنت متصل ب جوجل
                                 </h5>
                                 <a href="/cdn-cgi/l/email-protection" class="__cf_email__"
-                                    data-cfemail="f9979498818e9c9595b994989095d79a9694">[email&#160;protected]</a>
+                                    data-cfemail="f9979498818e9c9595b994989095d79a9694">[الايميل&#160;محمي]</a>
                             </div>
                             <hr class="border-light m-0">
                             <div class="card-body">
-                                <button type="button" class="btn btn-facebook">Connect to
-                                    <strong>Facebook</strong></button>
+                                <button type="button" class="btn btn-facebook">الاتصال مع
+                                    <strong>فيسبوك</strong></button>
                             </div>
                             <hr class="border-light m-0">
                             <div class="card-body">
-                                <button type="button" class="btn btn-instagram">Connect to
-                                    <strong>Instagram</strong></button>
+                                <button type="button" class="btn btn-instagram">الاتصال مع
+                                    <strong>انستغرام</strong></button>
                             </div>
                         </div>
                         <div class="tab-pane fade" id="account-notifications">
                             <div class="card-body pb-2">
-                                <h6 class="mb-4">Activity</h6>
+                                <h6 class="mb-4">النشاط</h6>
                                 <div class="form-group">
                                     <label class="switcher">
                                         <input type="checkbox" class="switcher-input" checked>
@@ -186,7 +191,7 @@
                                             <span class="switcher-yes"></span>
                                             <span class="switcher-no"></span>
                                         </span>
-                                        <span class="switcher-label">Email me when someone comments on my article</span>
+                                        <span class="switcher-label">أرسل لي بريدًا إلكترونيًا إذا كان لديك أي تعليقات عني</span>
                                     </label>
                                 </div>
                                 <div class="form-group">
@@ -196,8 +201,7 @@
                                             <span class="switcher-yes"></span>
                                             <span class="switcher-no"></span>
                                         </span>
-                                        <span class="switcher-label">Email me when someone answers on my forum
-                                            thread</span>
+                                        <span class="switcher-label">أرسل لي بريدًا إلكترونيًا عندما يجيب شخص ما على موضوع المنتدى الخاص بي</span>
                                     </label>
                                 </div>
                                 <div class="form-group">
@@ -207,13 +211,13 @@
                                             <span class="switcher-yes"></span>
                                             <span class="switcher-no"></span>
                                         </span>
-                                        <span class="switcher-label">Email me when someone follows me</span>
+                                        <span class="switcher-label">أرسل لي بريدًا إلكترونيًا عندما يتابعني شخص ما</span>
                                     </label>
                                 </div>
                             </div>
                             <hr class="border-light m-0">
                             <div class="card-body pb-2">
-                                <h6 class="mb-4">Application</h6>
+                                <h6 class="mb-4">التطبيقات</h6>
                                 <div class="form-group">
                                     <label class="switcher">
                                         <input type="checkbox" class="switcher-input" checked>
@@ -221,7 +225,7 @@
                                             <span class="switcher-yes"></span>
                                             <span class="switcher-no"></span>
                                         </span>
-                                        <span class="switcher-label">News and announcements</span>
+                                        <span class="switcher-label">الأخبار والإعلانات</span>
                                     </label>
                                 </div>
                                 <div class="form-group">
@@ -231,7 +235,7 @@
                                             <span class="switcher-yes"></span>
                                             <span class="switcher-no"></span>
                                         </span>
-                                        <span class="switcher-label">Weekly product updates</span>
+                                        <span class="switcher-label">تحديثات المنتج الاسبوعية</span>
                                     </label>
                                 </div>
                                 <div class="form-group">
@@ -241,7 +245,7 @@
                                             <span class="switcher-yes"></span>
                                             <span class="switcher-no"></span>
                                         </span>
-                                        <span class="switcher-label">Weekly blog digest</span>
+                                        <span class="switcher-label">ملخص المدونة الاسبوعي</span>
                                     </label>
                                 </div>
                             </div>
@@ -251,8 +255,8 @@
             </div>
         </div>
         <div class="text-right mt-3">
-            <button type="button" class="btn btn-primary">Save changes</button>&nbsp;
-            <button type="button" class="btn btn-default">Cancel</button>
+            <button type="button" class="btn btn-primary">حفظ التغييرات</button>&nbsp;
+            <button type="button" class="btn btn-default">إلغاء</button>
         </div>
     </div>
     <script data-cfasync="false" src="/cdn-cgi/scripts/5c5dd728/cloudflare-static/email-decode.min.js"></script>

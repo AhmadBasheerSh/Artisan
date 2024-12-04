@@ -3,7 +3,7 @@
 @import url('https://fonts.googleapis.com/css2?family=Lemonada:wght@300..700&display=swap');
 
 body {
-    background: linear-gradient(135deg, #e0f7fa, #ffffff);
+    background: linear-gradient(800deg, #0c89e2, #cd59f0);
     background-size: cover;
     font-family: 'Playfair Display', serif;
     color: #343a40;
@@ -155,7 +155,7 @@ h4 {
 }
 
 .switcher-input:checked+.switcher-indicator {
-    background-color: #007bff;
+    background-color: #d3d7db9b;
 }
 
 .switcher-input:checked+.switcher-indicator .switcher-yes {
