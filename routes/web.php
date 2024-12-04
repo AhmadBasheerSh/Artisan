@@ -13,6 +13,7 @@ Route::get('/', [MainController::class, 'index'])->name('index');
 
 Route::middleware('auth','verified')->group(function () {
     Route::get('/profile', [ProfileController::class, 'index'])->name('profile');
+    // Route::get('/editing', [PageController::class, 'show'])->name('editing');
     Route::get('/posts', [SiteController::class, 'index'])->name('posts');
     Route::get('/post', [SiteController::class, 'post'])->name('post');
     Route::get('/conversations', [ConversationController::class, 'index'])->name('conversations.index');
