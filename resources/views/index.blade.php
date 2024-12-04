@@ -12,6 +12,8 @@
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css">
 
+    <script src="https://kit.fontawesome.com/a076d05399.js"></script>
+
 </head>
 
 <body>
@@ -72,9 +74,22 @@
 
 
         <div>
-            
-            <button class="cute-btn"><a href="register">تسجيل</a></button>
-            <button class="cute-btn"><a href="login">تسجيل الدخول</a></button>
+
+            <button id="openLoginModal" class="cute-btn">تسجيل الدخول</button>
+            <div id="LoginModal" class="modal">
+                <div class="modalLogin-content">
+                    <span id="closeRegModal" class="close-button">&times;</span>
+                    @include('auth.login')
+                </div>
+            </div>
+            <button id="openRegModal" class="cute-btn">تسجيل</button>
+            <div id="regModal" class="modal">
+                <div class="modal-content">
+
+                    @include('auth.register')
+                </div>
+            </div>
+
         </div>
     </nav>
 
@@ -232,11 +247,11 @@
                 <h3>عبد الكريم</h3>
             </div>
             <div class="developer-item">
-                <img src="developer4.jpg" alt="مطور 4">
+                <img src="" alt="مطور 4">
                 <h3>عبد الله</h3>
             </div>
             <div class="developer-item">
-                <img src="developer5.jpg" alt="مطور 5">
+                <img src="" alt="مطور 5">
                 <h3>حسام</h3>
             </div>
         </div>
@@ -321,9 +336,6 @@
                 بأسرع وقت ممكن لضمان رضاكم التام عن خدماتنا.</p>
         </div>
     </footer>
-
-
-
 
 
     <script src="{{ asset('mainassets/js/index.js') }}"></script>

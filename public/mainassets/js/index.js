@@ -114,3 +114,42 @@ function nextSlide() {
 window.onload = function() {
     slide1();
 };
+
+
+const LoginModal = document.getElementById('LoginModal');
+const openLoginModal = document.getElementById('openLoginModal');
+const closeLoginModal = document.getElementById('closeLoginModal');
+
+// فتح النافذة المنبثقة عند الضغط على زر "عرض المتابعين"
+openLoginModal.onclick = function() {
+    LoginModal.style.display = 'flex';
+}
+
+// إغلاق النافذة المنبثقة عند الضغط على زر الإغلاق
+// closeLoginModal.onclick = function() {
+//     LoginModal.style.display = 'none';
+// }
+
+const regModal = document.getElementById('regModal');
+const openRegModal = document.getElementById('openRegModal');
+const closeRegModal = document.getElementById('closeRegModal');
+
+// فتح النافذة المنبثقة عند الضغط على زر "عرض المتابعين"
+openRegModal.onclick = function() {
+    regModal.style.display = 'flex';
+}
+
+// إغلاق النافذة المنبثقة عند الضغط على زر الإغلاق
+closeRegModal.onclick = function() {
+    regModal.style.display = 'none';
+}
+
+// إغلاق النافذة عند الضغط خارجها
+window.onclick = function(event) {
+    if (event.target == regModal) {
+        regModal.style.display = 'none';
+    }
+    if (event.target == LoginModal) {
+        LoginModal.style.display = 'none';
+    }
+}

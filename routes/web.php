@@ -17,7 +17,7 @@ Route::middleware('auth','verified')->group(function () {
     Route::get('/posts', [SiteController::class, 'index'])->name('posts');
     Route::get('/post', [SiteController::class, 'post'])->name('post');
     Route::get('/conversations', [ConversationController::class, 'index'])->name('conversations.index');
-    Route::get('/conversations/{id}', [ConversationController::class, 'show'])->name('conversations.show');
+    Route::post('/conversations', [ConversationController::class, 'show'])->name('conversations.show');
 });
 
 // Authentication routes

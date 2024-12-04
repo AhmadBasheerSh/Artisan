@@ -2,8 +2,6 @@
 @import url('https://fonts.googleapis.com/css2?family=Harmattan:wght@400;500;700&display=swap');
 @import url('https://fonts.googleapis.com/css2?family=Lemonada:wght@300..700&display=swap');
 
-
-
 body {
     direction: ltr;
     background: #f8f9fa;
@@ -13,6 +11,7 @@ body {
     font-weight: 500;
     font-style: normal;
     font-size: 20px;
+    overflow-x: hidden;
 }
 
 a {
@@ -80,12 +79,13 @@ img {
     position: absolute;
     width: 150px;
     height: 250px;
-    top: 500px;
+    top: 600px;
     left: -75px;
     border-radius: 20px;
     animation-name: d1;
     animation-duration: 1s;
     animation-fill-mode: forwards;
+    z-index: 10;
 }
 
 @keyframes d1 {
@@ -94,13 +94,13 @@ img {
     }
 
     to {
-        translate: 0px -400px;
+        translate: 0px -500px;
     }
 }
 
 @keyframes d1_r {
     from {
-        translate: 0px -400px;
+        translate: 0px -500px;
     }
 
     to {
@@ -112,7 +112,7 @@ img {
     position: absolute;
     width: 150px;
     height: 250px;
-    top: 500px;
+    top: 600px;
     left: -75px;
     border-radius: 20px;
     animation-name: d2;
@@ -127,13 +127,13 @@ img {
     }
 
     to {
-        translate: 0px -130px;
+        translate: 0px -230px;
     }
 }
 
 @keyframes d2_r {
     from {
-        translate: 0px -130px;
+        translate: 0px -230px;
     }
 
     to {
@@ -145,8 +145,8 @@ img {
     position: absolute;
     width: 150px;
     height: 250px;
-    top: 500px;
-    left: 100px;
+    top: 600px;
+    left: 115px;
     border-radius: 20px;
     animation-name: d3;
     animation-duration: 1s;
@@ -160,13 +160,13 @@ img {
     }
 
     to {
-        translate: 0px -330px;
+        translate: 0px -430px;
     }
 }
 
 @keyframes d3_r {
     from {
-        translate: 0px -330px;
+        translate: 0px -430px;
     }
 
     to {
@@ -178,8 +178,8 @@ img {
     position: absolute;
     width: 150px;
     height: 250px;
-    top: 500px;
-    left: 100px;
+    top: 600px;
+    left: 115px;
     border-radius: 20px;
     animation-name: d4;
     animation-duration: 1s;
@@ -193,13 +193,13 @@ img {
     }
 
     to {
-        translate: 0px -60px;
+        translate: 0px -160px;
     }
 }
 
 @keyframes d4_r {
     from {
-        translate: 0px -60px;
+        translate: 0px -160px;
     }
 
     to {
@@ -211,8 +211,8 @@ img {
     position: absolute;
     width: 150px;
     height: 250px;
-    top: 500px;
-    left: 275px;
+    top: 600px;
+    left: 305px;
     border-radius: 20px;
     animation-name: d5;
     animation-duration: 1s;
@@ -226,13 +226,13 @@ img {
     }
 
     to {
-        translate: 0px -260px;
+        translate: 0px -360px;
     }
 }
 
 @keyframes d5_r {
     from {
-        translate: 0px -260px;
+        translate: 0px -360px;
     }
 
     to {
@@ -244,8 +244,8 @@ img {
     position: absolute;
     width: 150px;
     height: 250px;
-    top: 500px;
-    left: 450px;
+    top: 600px;
+    left: 495px;
     border-radius: 20px;
     animation-name: d6;
     animation-duration: 1s;
@@ -259,13 +259,13 @@ img {
     }
 
     to {
-        translate: 0px -210px;
+        translate: 0px -310px;
     }
 }
 
 @keyframes d6_r {
     from {
-        translate: 0px -210px;
+        translate: 0px -310px;
     }
 
     to {
@@ -277,8 +277,8 @@ img {
     position: absolute;
     width: 150px;
     height: 250px;
-    top: 500px;
-    left: 625px;
+    top: 600px;
+    left: 685px;
     border-radius: 20px;
     animation-name: d7;
     animation-duration: 1s;
@@ -292,13 +292,13 @@ img {
     }
 
     to {
-        translate: 0px -150px;
+        translate: 0px -250px;
     }
 }
 
 @keyframes d7_r {
     from {
-        translate: 0px -130px;
+        translate: 0px -250px;
     }
 
     to {
@@ -310,8 +310,8 @@ img {
     position: absolute;
     width: 150px;
     height: 250px;
-    top: 500px;
-    left: 800px;
+    top: 600px;
+    left: 875px;
     border-radius: 20px;
     animation-name: d8;
     animation-duration: 1s;
@@ -325,13 +325,13 @@ img {
     }
 
     to {
-        translate: 0px -210px;
+        translate: 0px -310px;
     }
 }
 
 @keyframes d8_r {
     from {
-        translate: 0px -210px;
+        translate: 0px -310px;
     }
 
     to {
@@ -343,8 +343,8 @@ img {
     position: absolute;
     width: 150px;
     height: 250px;
-    top: 500px;
-    left: 975px;
+    top: 600px;
+    left: 1065px;
     border-radius: 20px;
     animation-name: d9;
     animation-duration: 1s;
@@ -358,13 +358,13 @@ img {
     }
 
     to {
-        translate: 0px -260px;
+        translate: 0px -360px;
     }
 }
 
 @keyframes d9_r {
     from {
-        translate: 0px -260px;
+        translate: 0px -360px;
     }
 
     to {
@@ -376,8 +376,8 @@ img {
     position: absolute;
     width: 150px;
     height: 250px;
-    top: 500px;
-    left: 1150px;
+    top: 600px;
+    left: 1255px;
     border-radius: 20px;
     animation-name: d10;
     animation-duration: 1s;
@@ -391,13 +391,13 @@ img {
     }
 
     to {
-        translate: 0px -330px;
+        translate: 0px -430px;
     }
 }
 
 @keyframes d10_r {
     from {
-        translate: 0px -330px;
+        translate: 0px -430px;
     }
 
     to {
@@ -409,8 +409,8 @@ img {
     position: absolute;
     width: 150px;
     height: 250px;
-    top: 500px;
-    left: 1150px;
+    top: 600px;
+    left: 1255px;
     border-radius: 20px;
     animation-name: d11;
     animation-duration: 1s;
@@ -424,13 +424,13 @@ img {
     }
 
     to {
-        translate: 0px -60px;
+        translate: 0px -160px;
     }
 }
 
 @keyframes d11_r {
     from {
-        translate: 0px -60px;
+        translate: 0px -160px;
     }
 
     to {
@@ -442,8 +442,8 @@ img {
     position: absolute;
     width: 150px;
     height: 250px;
-    top: 500px;
-    left: 1325px;
+    top: 600px;
+    left: 1445px;
     border-radius: 20px;
     animation-name: d12;
     animation-duration: 1s;
@@ -457,13 +457,13 @@ img {
     }
 
     to {
-        translate: 0px -400px;
+        translate: 0px -500px;
     }
 }
 
 @keyframes d12_r {
     from {
-        translate: 0px -400px;
+        translate: 0px -500px;
     }
 
     to {
@@ -475,8 +475,8 @@ img {
     position: absolute;
     width: 150px;
     height: 250px;
-    top: 500px;
-    left: 1325px;
+    top: 600px;
+    left: 1445px;
     border-radius: 20px;
     animation-name: d13;
     animation-duration: 1s;
@@ -490,13 +490,13 @@ img {
     }
 
     to {
-        translate: 0px -130px;
+        translate: 0px -230px;
     }
 }
 
 @keyframes d13_r {
     from {
-        translate: 0px -130px;
+        translate: 0px -230px;
     }
 
     to {
@@ -595,7 +595,7 @@ img {
     filter: brightness(1.1) saturate(1.2);
 }
 
-/* 
+/*
 .c2_img {
     position: relative;
     width: 450px;
@@ -1315,6 +1315,59 @@ button:active {
 }
 
 
+.modal {
+    display: none; /* يتم إخفاء النافذة في البداية */
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-color: rgba(0, 0, 0, 0.5);
+    justify-content: center;
+    align-items: center;
+}
+
+.modal-content {
+    background-color: #fff;
+    padding: 30px;
+    border-radius: 8px;
+    position: relative;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+    text-align: center;
+    width: 90%; /* عرض النافذة */
+    max-width: 400px; /* العرض الأقصى للنافذة */
+    min-height: 400px; /* ارتفاع ثابت بنسبة 80% من نافذة العرض */
+    max-height: 700px;
+    overflow-y: auto; /* تفعيل التمرير العمودي */
+    -ms-overflow-style: none;  /* إخفاء شريط التمرير في إنترنت إكسبلورر وEdge */
+    scrollbar-width: none;     /* إخفاء شريط التمرير في Firefox */
+}
+
+.modalLogin-content {
+    background-color: #fff;
+    padding: 0px;
+    border-radius: 8px;
+    /* position: relative; */
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+    /* text-align: center; */
+    /* width: 90%; عرض النافذة */
+    max-width: 700px; /* العرض الأقصى للنافذة */
+    min-height: 400px; /* ارتفاع ثابت بنسبة 80% من نافذة العرض */
+    /* max-height: 700px; */
+}
+
+.modal-content::-webkit-scrollbar {
+    display: none;
+}
+
+.close-button {
+    position: absolute;
+    top: 10px;
+    right: 15px;
+    font-size: 24px;
+    color: #333;
+    cursor: pointer;
+}
 
 
 

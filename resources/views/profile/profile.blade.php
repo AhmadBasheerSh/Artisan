@@ -41,7 +41,7 @@
             </div>
             <div class="buttons">
                 <button class="follow-btn"><i class="fa-sharp fa-solid fa-user-plus"></i>        متابعة  </button>
-                <button class="massege-btn"><i class="fa-sharp fa-solid fa-paper-plane"></i>  مراسلة</button>
+                <a href="{{ url('conversations?receiver_id=').base64_encode(3) }}" class="massege-btn"><i class="fa-sharp fa-solid fa-paper-plane"></i>  مراسلة</a>
                 <button class="post-btn"><i class="fa-sharp fa-solid fa-pen"></i>  كتابة منشور</button>
             </div>
         </div>
