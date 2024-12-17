@@ -66,9 +66,11 @@ body {
 .upload-label {
     cursor: pointer;
     display: inline-block;
+    position: relative;
 }
 
 .upload-icon {
+    min-width: 400px;
     width: 100%; /* ضبط حجم الأيقونة */
     height: 300px;
     border-radius: 25px;
@@ -141,4 +143,25 @@ textarea {
 .emojionearea .emojionearea-editor {
     direction: rtl;
     text-align: right;
+}
+
+
+
+#image-count {
+    font-size: 14px;
+    color: #333;
+    margin-top: 0px;
+}
+
+.carousel-count {
+    position: absolute;
+    top: 10px;
+    left: 10px;
+    background: rgba(0, 0, 0, 0.5); /* خلفية داكنة شبه شفافة */
+    color: white;
+    padding: 5px 10px;
+    border-radius: 25px;
+    font-size: 16px;
+    z-index: 9999;
+    display: none; /* مخفي في البداية */
 }

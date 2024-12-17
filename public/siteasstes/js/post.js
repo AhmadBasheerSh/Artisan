@@ -1,50 +1,3 @@
-// document.addEventListener("DOMContentLoaded", function() {
-//     // التعامل مع زر الإعجاب
-//     document.querySelectorAll(".like-button").forEach(button => {
-//         button.addEventListener("click", function() {
-//             let likeCount = button.querySelector(".like-count");
-//             let count = parseInt(likeCount.textContent, 10);
-//             likeCount.textContent = count + 1; // زيادة عدد الإعجابات
-//         });
-//     });
-
-    // التعامل مع زر الرد
-//     document.querySelectorAll(".reply-button").forEach(button => {
-//         button.addEventListener("click", function() {
-//             const commentDiv = button.closest(".comment-content");
-//             let replyInput = commentDiv.querySelector(".reply-input");
-
-//             // إذا لم يكن هناك حقل رد موجود، قم بإنشائه
-//             if (!replyInput) {
-//                 replyInput = document.createElement("textarea");
-//                 replyInput.className = "reply-input";
-//                 replyInput.placeholder = "اكتب ردك هنا...";
-
-//                 let submitReplyButton = document.createElement("button");
-//                 submitReplyButton.textContent = "إرسال الرد";
-//                 submitReplyButton.className = "submit-reply-button";
-
-//                 commentDiv.querySelector(".replies").appendChild(replyInput);
-//                 commentDiv.querySelector(".replies").appendChild(submitReplyButton);
-
-//                 // إرسال الرد
-//                 submitReplyButton.addEventListener("click", function() {
-//                     let replyText = replyInput.value.trim();
-//                     if (replyText) {
-//                         let replyDiv = document.createElement("div");
-//                         replyDiv.className = "reply";
-//                         replyDiv.innerHTML = `<span class="username">اسم المستخدم</span>: ${replyText}`;
-//                         commentDiv.querySelector(".replies").appendChild(replyDiv);
-//                         replyInput.remove();
-//                         submitReplyButton.remove();
-//                     }
-//                 });
-//             }
-//         });
-//     });
-// });
-
-
 document.addEventListener('DOMContentLoaded', function() {
     const carousel = document.getElementById('postCarousel');
     const totalSlides = document.querySelectorAll('.carousel-item').length;
@@ -67,6 +20,46 @@ function toggleReplies(button) {
         button.textContent = 'إخفاء الردود';
     } else {
         replies.style.display = 'none';
-        button.textContent = 'عرض الردود (1)';
+        var repliesCount = button.getAttribute('data-replies-count');
+        button.textContent = `عرض الردود (${repliesCount})`;
     }
+}
+
+function toggleLove($formName) {
+    const form = document.getElementById($formName);
+    form.submit();
+}
+
+// modal JS
+function openModal() {
+    const modal = document.getElementById("likesModal");
+    if (modal) {
+        modal.style.display = "block";
+    } else {
+        console.error("Modal غير موجود!");
+    }
+}
+
+const followersModal = document.getElementById('lovesModal');
+const openFollowersModal = document.getElementById('lovesCount');
+const closeFollowersModal = document.getElementById('closeLovesModal');
+
+lovesCount.onclick = function() {
+    followersModal.style.display = 'flex';
+}
+
+closeFollowersModal.onclick = function() {
+    followersModal.style.display = 'none';
+}
+
+window.onclick = function(event) {
+    if (event.target == followersModal) {
+        followersModal.style.display = 'none';
+    }
+}
+//***** */
+
+function toggleReplyForm(commentId) {
+    const replyForm = document.getElementById(`reply-form-${commentId}`);
+    replyForm.style.display = replyForm.style.display === 'none' ? 'block' : 'none';
 }

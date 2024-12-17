@@ -7,7 +7,7 @@
     <link rel="stylesheet" href="{{ asset('siteasstes/css/posts.css') }}">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css">
-    
+
 
 
 </head>
@@ -58,13 +58,23 @@
         </div>
     </nav>
 
+    <div class="createPost-button">
+        <a href="{{ route('posts.create') }}" style="text-decoration: none;">
+            <button>
+                <i class="fa fa-plus"></i>
+            </button>
+        </a>
+    </div>
+
     <!-- معرض الصور -->
     <div class="gallery">
+
         <div class="gallery-item">
+            <a href="{{ route('posts.show', 1) }}" style="text-decoration: none;">
             <img src="{{asset('mainassets/img/c52bb25cf9e60cf6ecaa000b385afe88.jpg')}}" alt="صورة 1">
             <div class="caption">
                 <a href="#">اسم الناشر 1</a>
-                <p>وصف للصورة 1</p>
+                <p>وصف للصورةتجريبي 1</p>
             </div>
             <div class="actions">
                 <a href="#" title="إعجاب"><i class="fa fa-thumbs-up"></i></a>
@@ -73,6 +83,7 @@
                 <a href="#" title="مشاركة"><i class="fa fa-share"></i></a>
             </div>
         </div>
+
         <div class="gallery-item">
             <img src="{{asset('mainassets/img/a7a975e4dcdb1e564df406e02f04a0cd.jpg')}}" alt="صورة 1">
             <div class="caption">

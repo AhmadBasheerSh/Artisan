@@ -12,4 +12,8 @@ class Category extends Model
     public function users() {
         return $this->hasMany(User::class, 'category_id');
     }
+
+    public function posts() {
+        return $this->hasMany(Post::class, 'post_id');
+    }
 }

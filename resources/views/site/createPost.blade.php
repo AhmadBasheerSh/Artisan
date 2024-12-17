@@ -25,39 +25,45 @@
 
     <div class="createpost-container">
         <h2>إنشاء منشور جديد</h2>
-        <div class="createpost-content">
-            <!-- قسم رفع الصور -->
-            <div class="upload-section">
-                <label for="post-image" class="upload-label">
-                    <!-- يمكنك استخدام صورة مخصصة أو أيقونة هنا -->
-                    <img src="{{ asset("mainassets/img/upload.png") }}" alt="رفع الصور" class="upload-icon">
-                </label>
-                <input type="file" id="post-image" multiple style="display: none;">
+        <form action="{{ route('posts.store') }}" method="post" enctype="multipart/form-data">
+            @csrf
+            <div class="createpost-content">
+                <!-- قسم رفع الصور -->
+                <div class="upload-section">
+                    <label for="post-image" class="upload-label">
+                        <!-- يمكنك استخدام صورة مخصصة أو أيقونة هنا -->
+                        <img id="upload-icon" src="{{ asset("mainassets/img/upload.png") }}" alt="رفع الصور" class="upload-icon">
+                        <div id="carousel-count" class="carousel-count">+0</div>
+                    </label>
+
+                    <input name="images[]" type="file" id="post-image" multiple style="display: none;">
+                </div>
+
+                <!-- قسم التفاصيل -->
+                <div class="details-section">
+                    <label for="post-title">العنوان:</label>
+                    <input name="title" class="emojionearea" type="text" id="post-title" placeholder="أدخل عنوان المنشور">
+
+                    <label for="post-description">الوصف:</label>
+                    <textarea name="description" class="emojionearea" id="post-description" placeholder="أدخل وصف المنشور"></textarea>
+
+                    <label for="post-category">الأقسام:</label>
+                    <select name="category_id" id="post-category">
+                        <option value="">اختر</option>
+                        @foreach ($categories as $category)
+                            <option value="{{ $category->id }}">{{ $category->name }}</option>
+                        @endforeach
+                    </select>
+                </div>
             </div>
-
-            <!-- قسم التفاصيل -->
-            <div class="details-section">
-                <label for="post-title">العنوان:</label>
-                <input class="emojionearea" type="text" id="post-title" placeholder="أدخل عنوان المنشور">
-
-                <label for="post-description">الوصف:</label>
-                <textarea class="emojionearea" id="post-description" placeholder="أدخل وصف المنشور"></textarea>
-
-                <label for="post-category">الأقسام:</label>
-                <select id="post-category">
-                    <option value="category1">القسم 1</option>
-                    <option value="category2">القسم 2</option>
-                    <option value="category3">القسم 3</option>
-                    <!-- أضف المزيد من الأقسام حسب الحاجة -->
-                </select>
+            <div class="button-container">
+                <button type="submit" class="send-btn"><i class="fa fa-paper-plane">
+                </i>    نشر  </button>
             </div>
-        </div>
-        <div class="button-container">
-            <button class="send-btn"><i class="fa fa-paper-plane">
-            </i>         نشر  </button>
-        </div>
+        </form>
     </div>
 
+    <script src="{{ asset('siteasstes/js/createPost.js') }}"></script>
     <script src="{{ asset('emojionearea/emojionearea.min.js') }}"></script>
     <script type="text/javascript">
         $(document).ready(function() {
