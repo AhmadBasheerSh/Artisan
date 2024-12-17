@@ -24,7 +24,7 @@
 
         <ul>
             <li><a href="#">الرئيسية</a></li>
-            <li><a href="#">من نحن</a></li>
+            <li><a href="">من نحن</a></li>
             <li><a href="#">خدماتنا</a></li>
             <li><a href="#">تواصل معنا</a></li>
         </ul>
