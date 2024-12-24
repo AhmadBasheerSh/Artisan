@@ -1,26 +1,26 @@
+@php
+    $img = null;
+    $name = null;
+    $lastMessage = $conversation->messages()->latest()->first();
+    if ($conversation->type == 'individual'){
+        $user = $conversation->users->where('id', '!=', auth()->id())->first() ?? null;
+        $img = $user->image;
+        $name = $user->name;
+    }else{
+        $img = $conversation->group->image;
+        $name = $conversation->group->name;
+    }
+@endphp
 <li>
-    <a href="#" data-conversation="#conversation-{{$conversation->id}}">
+    <a href="#" data-conversation="#conversation{{ isset($isGroups)  ? '-group' :  ''}}-{{$conversation->id}}">
         <img class="content-message-image"
-            src="@if ($conversation->type == 'individual') @foreach ($conversation->users->where('id', '!=', auth()->id()) as $user)
-                        {{ $user->image }}
-                    @endforeach
-                @else
-                    {{ $conversation->group->image }} @endif"
+            src="{{ $img }}"
             alt="">
         <span class="content-message-info">
             <span class="content-message-name">
-                @if ($conversation->type == 'individual')
-                    @foreach ($conversation->users->where('id', '!=', auth()->id()) as $user)
-                        {{ $user->name }}
-                    @endforeach
-                @else
-                    {{ $conversation->group->name }}
-                @endif
+                {{ $name }}
             </span>
             <span class="content-message-text">
-                @php
-                    $lastMessage = $conversation->messages()->latest()->first();
-                @endphp
                 @if($lastMessage)
                     {{ $lastMessage->message}}
                 @endif

@@ -1,21 +1,25 @@
-<button type="button" class="conversation-back"><i class="ri-arrow-left-line"></i></button>
+@php
+    $img = null;
+    $name = null;
+    if ($conversation->type == 'individual'){
+        $user = $conversation->users->where('id', '!=', auth()->id())->first() ?? null;
+        $img = $user->image;
+        $name = $user->name;
+    }else{
+        $img = $conversation->group->image;
+        $name = $conversation->group->name;
+    }
+@endphp
+
+<button type="button" class="conversation-back">
+    <i class="ri-arrow-left-line"></i></button>
 <div class="conversation-user">
     <img class="conversation-user-image"
-        src="@if ($conversation->type == 'individual') @foreach ($conversation->users->where('id', '!=', auth()->id()) as $user)
-                {{ $user->image }}
-            @endforeach
-            @else
-                {{ $conversation->group->image }} @endif"
-        alt="">
+        src="{{$img}}" alt="">
     <div>
         <div class="conversation-user-name">
-            @if ($conversation->type == 'individual')
-            @foreach ($conversation->users->where('id', '!=', auth()->id()) as $user)
-                {{ $user->name }}
-            @endforeach
-            @else
-                {{ $conversation->group->name }}
-            @endif</div>
+            {{$name}}
+        </div>
         <div class="conversation-user-status online">online</div>
     </div>
 </div>

@@ -18,76 +18,51 @@
                     <i class="ri-chat-1-fill"></i>
                 </a>
                 <ul class="chat-sidebar-menu">
-                    <li class="active"><a href="#" data-title="Chats"><i class="ri-chat-3-line"></i></a></li>
-                    <li><a href="#" data-title="Contacts"><i class="ri-contacts-line"></i></a></li>
-                    <li><a href="#" data-title="Documents"><i class="ri-folder-line"></i></a></li>
-                    <li><a href="#" data-title="Settings"><i class="ri-settings-line"></i></a></li>
-                    <li class="chat-sidebar-profile">
-                        <button type="button" class="chat-sidebar-profile-toggle">
-                            <img src="https://images.unsplash.com/photo-1534528741775-53994a69daeb?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxzZWFyY2h8OXx8cGVvcGxlfGVufDB8fDB8fHww&auto=format&fit=crop&w=500&q=60"
-                                alt="">
-                        </button>
-                        <ul class="chat-sidebar-profile-dropdown">
-                            <li><a href="#"><i class="ri-user-line"></i> Profile</a></li>
-                            <li><a href="#"><i class="ri-logout-box-line"></i> Logout</a></li>
+                    <li class="active" data-section="chats"><a href="#" data-section="Chats" data-title="chats"><i
+                                class="ri-chat-3-line"></i></a></li>
+                    <li class="chat-sidebar-Contacts" data-section="contacts"><a href="#" data-section="contacts"
+                            data-title="Contacts"><i class="ri-contacts-line"></i></a></li>
+                    <li class="chat-sidebar-groups">
+                        <a href="#" class="chat-sidebar-groups-toggle" data-title="groups">
+                            <i class="ri-group-line"></i>
+                        </a>
+                        <ul class="chat-sidebar-groups-dropdown">
+                            <li><a href="#" data-section="create"><i class="ri-add-circle-line"></i> New group</a>
+                            </li>
+                            <li><a href="#" class="view-groups" data-section="groups"><i class="ri-eye-line"></i>
+                                    View groups</a></li>
                         </ul>
                     </li>
+                    <li class="chat-sidebar-Documents" data-section="documents"><a href="#"
+                            data-section="documents" data-title="documents"><i class="ri-folder-line"></i></a></li>
                 </ul>
             </aside>
+
             <div class="chat-content">
-                <div class="content-sidebar">
-                    <div class="content-sidebar-title">Chats</div>
-                    <form action="" class="content-sidebar-form">
-                        <input type="search" class="content-sidebar-input" placeholder="Search...">
-                        <button type="submit" class="content-sidebar-submit"><i class="ri-search-line"></i></button>
-                    </form>
-                    <div class="content-messages">
-                        <ul class="content-messages-list">
-                            <li class="content-message-title"><span>Recently</span></li>
-                            @foreach ($conversations as $conversation)
-                                @include('conversations._user', ['conversation' => $conversation])
-                            @endforeach
-                        </ul>
-                    </div>
+                <div id="chats" class="content-section active">
+                    @include('conversations._main')
                 </div>
-                @if (!$open_chat)
-                    <div class="conversation conversation-default active">
-                    <i class="ri-chat-3-line"></i>
-                    <p>Select chat and view conversation!</p>
-                    </div>
-                @else
-                    <div class="conversation active" id="conversation-{{$open_chat}}">
-                        {{-- @foreach ($conversations as $conversation) --}}
-                            {{-- @if ($conversation->users->contains('id', $id_receiver) && $conversation->type === 'individual') --}}
-                            <div class="conversation-top">
-                                @include('conversations._header', ['conversation' => $open_chat])
-                            </div>
-                            <div class="conversation-main">
-                                <ul class="conversation-wrapper">
-                                    @include('conversations._chat')
-                                </ul>
-                            </div>
-                            @include('conversations._message', ['conversation_id' => $open_chat->id])
-                            {{-- @endif --}}
-                        {{-- @endforeach --}}
-                    </div>
-
-                @endif
-
-                @foreach ($conversations as $conversation)
-                    <div class="conversation" id="conversation-{{$conversation->id}}">
-                    <div class="conversation-top">
-                        @include('conversations._header', ['conversation' => $conversation])
-                    </div>
-                    <div class="conversation-main">
-                        <ul class="conversation-wrapper">
-                            @include('conversations._chat')
-                        </ul>
-                    </div>
-                    @include('conversations._message', ['conversation_id' => $conversation->id])
-                    </div>
-                @endforeach
+                <div id="contacts" class="content-section">
+                    <h2>Contacts</h2>
+                    <p>Manage your contacts here.</p>
+                </div>
+                <div id="create" class="content-section">
+                    @include('conversations._main', ['conversations' => $conversations->filter(function ($conv) {
+                        return $conv->type === 'group';
+                    }),'open_chat' => null])
+                    @include('conversations._createGroup')
+                </div>
+                <div id="groups" class="content-section">
+                    @include('conversations._main', ['conversations' => $conversations->filter(function ($conv) {
+                        return $conv->type === 'group';
+                    }),'open_chat' => null, 'isGroups' => 'yes'])
+                </div>
+                <div id="documents" class="content-section">
+                    <h2>documents</h2>
+                    <p>Manage your documents here.</p>
+                </div>
             </div>
+
         </div>
     </section>
 

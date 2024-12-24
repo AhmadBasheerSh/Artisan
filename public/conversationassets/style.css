@@ -104,11 +104,11 @@ body {
     opacity: 1;
     visibility: visible;
 }
-.chat-sidebar-profile {
-    margin-top: auto;
+.chat-sidebar-groups {
+    /* margin-top: auto; */
     position: relative;
 }
-.chat-sidebar-profile-toggle {
+/* .chat-sidebar-groups-toggle {
     background-color: transparent;
     border: none;
     outline: transparent;
@@ -118,13 +118,13 @@ body {
     display: block;
     cursor: pointer;
 }
-.chat-sidebar-profile-toggle > img {
+.chat-sidebar-groups-toggle > img {
     object-fit: cover;
     width: 100%;
     height: 100%;
     border-radius: 50%;
-}
-.chat-sidebar-profile-dropdown {
+} */
+.chat-sidebar-groups-dropdown {
     position: absolute;
     bottom: 100%;
     left: 16px;
@@ -139,12 +139,12 @@ body {
     transform-origin: left bottom;
     transition: all .15s ease-in-out;
 }
-.chat-sidebar-profile.active .chat-sidebar-profile-dropdown {
+.chat-sidebar-groups.active .chat-sidebar-groups-dropdown {
     opacity: 1;
     visibility: visible;
     transform: scale(1);
 }
-.chat-sidebar-profile-dropdown a {
+.chat-sidebar-groups-dropdown a {
     display: flex;
     align-items: center;
     padding: 8px 12px;
@@ -152,22 +152,35 @@ body {
     color: var(--slate-400);
     font-size: 14px;
 }
-.chat-sidebar-profile-dropdown a:hover {
+.chat-sidebar-groups-dropdown a:hover {
     background-color: var(--slate-100);
     color: var(--slate-600);
 }
-.chat-sidebar-profile-dropdown a:active {
+.chat-sidebar-groups-dropdown a:active {
     background-color: var(--slate-200);
 }
-.chat-sidebar-profile-dropdown a i {
+.chat-sidebar-groups-dropdown a i {
     margin-right: 12px;
     font-size: 17px;
 }
-/* end: Sidebar */
+/* end: Sidebar
 
 
 
 /* start: Content side */
+/* body, html {
+    margin: 0;
+    padding: 0;
+    height: 100%;
+} */
+.content-section{
+    display: none;
+    flex-direction: column;
+    height: 100%;
+}
+.content-section.active{
+    display: block;
+}
 .chat-content {
     padding-left: 64px;
     height: 100%;
@@ -417,9 +430,13 @@ body {
     overflow-y: auto;
     overflow-x: hidden;
     height: 100%;
-    padding: 16px;
+    display: flex;
+    flex-direction: column-reverse; /* عكس ترتيب المحادثة بحيث تظهر الرسالة الأخيرة أولاً */
 }
 .conversation-wrapper {
+    display: flex;
+    flex-direction: column;
+    overflow-y: auto;
     list-style-type: none;
 }
 .conversation-item {
@@ -483,6 +500,110 @@ body {
     text-align: right;
     margin-top: 4px;
     line-height: 1;
+}
+.message-files {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 10px;
+}
+
+.file-thumbnail img {
+    width: 100px;
+    height: 100px;
+    object-fit: cover;
+    border-radius: 8px;
+    border: 1px solid #ddd;
+}
+
+.file-item-chat {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 5px;
+}
+
+.file-icon-chat i {
+    font-size: 30px;
+    color: #555;
+}
+
+.file-name-chat a {
+    font-size: 12px;
+    color: #007bff;
+    text-decoration: none;
+}
+
+.file-name-chat a:hover {
+    text-decoration: underline;
+}
+.conversation-file-video {
+    max-width: 100%;
+    max-height: 300px;
+    border-radius: 8px;
+    margin: 10px 0;
+    display: block;
+}
+
+.modal-img {
+    display: none;
+    position: fixed;
+    z-index: 1000;
+    left: 0;
+    top: 0;
+    width: 100%;
+    height: 100%;
+    background-color: rgba(0, 0, 0, 0.7);
+    padding: 50px;
+    overflow: hidden;
+    justify-content: center;
+    align-items: center;
+}
+
+.modal-content-img {
+    position: relative;
+    max-width: 80%;
+    margin: auto;
+    text-align: center;
+}
+
+.modal-image {
+    width: 100%;
+    max-width: 600px;
+    height: auto;
+    transition: transform 0.3s ease-in-out;
+}
+
+.close-img {
+    position: absolute;
+    top: 15px;
+    right: 15px;
+    font-size: 40px;
+    color: white;
+    background-color: rgba(0, 0, 0, 0.5);
+    border: none;
+    border-radius: 50%;
+    width: 40px;
+    height: 40px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    cursor: pointer;
+    transition: all 0.3s ease;
+}
+
+.close-img:hover {
+    background-color: rgba(255, 0, 0, 0.7);
+    transform: scale(1.1);
+}
+
+.close-img:focus {
+    outline: none;
+}
+
+.modal-caption-img {
+    color: white;
+    font-size: 16px;
+    margin-top: 10px;
 }
 .conversation-item.me .conversation-item-time {
     color: rgba(255, 255, 255, .7);
@@ -639,7 +760,7 @@ body {
 .conversation-form-button {
     width: 40px;
     height: 40px;
-    /* display: flex; */
+    display: flex;
     align-items: center;
     justify-content: center;
     border-radius: 4px;
@@ -675,7 +796,6 @@ body {
 .conversation-default {
     align-items: center;
     justify-content: center;
-    padding: 16px;
     padding-left: calc(256px + 16px);
     color: var(--slate-400);
 }
@@ -773,3 +893,487 @@ body {
     }
 }
 /* end: Breakpoints */
+
+/* create new group */
+/* زر فتح المودال */
+.btn {
+    padding: 10px 20px;
+    background: linear-gradient(135deg, #4CAF50, #3E8E41);
+    color: white;
+    border: none;
+    border-radius: 5px;
+    font-size: 16px;
+    cursor: pointer;
+    transition: 0.3s ease;
+    text-shadow: 1px 1px 2px rgba(0, 0, 0, 0.3);
+}
+
+.btn:hover {
+    background: linear-gradient(135deg, #3E8E41, #2E6E31);
+}
+
+/* تصميم المودال */
+.modal-createGroup {
+    display: none;
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-color: rgba(0, 0, 0, 0.5);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    z-index: 1000;
+}
+
+/* محتوى المودال */
+.modal-content-createGroup {
+    background: white;
+    padding: 20px;
+    border-radius: 10px;
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.3);
+    width: 400px;
+    max-width: 90%;
+    animation: fadeIn 0.3s ease-out;
+}
+
+/* العنوان */
+.modal-content-createGroup h2 {
+    margin-bottom: 20px;
+    font-size: 22px;
+    text-align: center;
+    color: #333;
+}
+
+/* إغلاق المودال */
+.close {
+    position: absolute;
+    top: 10px;
+    right: 15px;
+    font-size: 20px;
+    font-weight: bold;
+    color: #888;
+    cursor: pointer;
+}
+
+.close:hover {
+    color: #333;
+}
+
+/* الحقول */
+.form-group {
+    margin-bottom: 15px;
+}
+
+.form-group label {
+    display: block;
+    margin-bottom: 5px;
+    font-weight: bold;
+    color: #555;
+}
+
+.form-group input,
+.form-group textarea {
+    width: 100%;
+    padding: 10px;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+    font-size: 14px;
+    outline: none;
+    transition: 0.2s;
+}
+
+.form-group input:focus,
+.form-group textarea:focus {
+    border-color: #4CAF50;
+    box-shadow: 0 0 5px rgba(76, 175, 80, 0.5);
+}
+
+/* الأزرار */
+.form-actions {
+    display: flex;
+    justify-content: space-between;
+    gap: 10px;
+}
+
+.btn-primary {
+    background-color: #4CAF50;
+    color: white;
+    border: none;
+    padding: 10px 15px;
+    border-radius: 5px;
+    cursor: pointer;
+    transition: 0.3s ease;
+}
+
+.btn-primary:hover {
+    background-color: #3E8E41;
+}
+
+.btn-secondary {
+    background-color: #ccc;
+    color: #333;
+    border: none;
+    padding: 10px 15px;
+    border-radius: 5px;
+    cursor: pointer;
+    transition: 0.3s ease;
+}
+
+.btn-secondary:hover {
+    background-color: #bbb;
+}
+
+/* تأثير الظهور */
+@keyframes fadeIn {
+    from {
+        opacity: 0;
+        transform: scale(0.9);
+    }
+    to {
+        opacity: 1;
+        transform: scale(1);
+    }
+}
+.friends-container {
+    display: flex;
+    flex-direction: column;
+    gap: 10px; /* مسافة بين الأصدقاء */
+    max-height: 200px; /* ارتفاع يكفي لعرض 3 أعضاء فقط */
+    overflow-y: auto; /* تمكين التمرير في حال زيادة عدد الأعضاء */
+    padding: 10px;
+    border: 1px solid #ccc;
+    border-radius: 8px;
+    background-color: #f9f9f9;
+}
+
+/* تصميم كل عنصر (صديق) */
+.friend-item {
+    display: flex;
+    align-items: center;
+    padding: 10px;
+    border: 1px solid #ddd;
+    border-radius: 5px;
+    background-color: #fff;
+    cursor: pointer;
+    transition: background-color 0.3s ease;
+    gap: 10px; /* مسافة بين الصورة والنص */
+}
+
+/* تفاعل عند التمرير أو التحديد */
+.friend-item:hover {
+    background-color: #f0f0f0;
+}
+
+.friend-item.active {
+    background-color: #d1e7dd; /* لون التحديد */
+    border-color: #0f5132;
+}
+
+.friend-item img.friend-image {
+    width: 40px;
+    height: 40px;
+    border-radius: 50%; /* جعل الصورة دائرية */
+    object-fit: cover; /* الحفاظ على أبعاد الصورة */
+    border: 2px solid #ddd;
+}
+
+.friend-item span {
+    font-size: 16px;
+    color: #333;
+    flex-grow: 1; /* السماح للنص بالتمدد */
+}
+
+.friend-item input[type="checkbox"] {
+    display: none; /* إخفاء مربع الاختيار */
+}
+.select-members-container {
+    display: flex;
+    align-items: center;
+    font-size: 16px;
+    font-weight: bold;
+    color: #555;
+}
+
+.select-text {
+    margin-right: 10px; /* مسافة بين "Select Members" والعدد */
+}
+
+#selected-count {
+    font-size: 14px;
+    font-weight: normal;
+    color: #333;
+    margin-right: 5px; /* مسافة قليلة بين العدد والكلمة */
+}
+
+.members-text {
+    font-size: 14px;
+    font-weight: normal;
+    color: #333;
+}
+.group-image-container {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    margin-bottom: 15px;
+}
+
+.group-image-label {
+    position: relative;
+    cursor: pointer;
+    display: inline-block;
+}
+
+.group-image {
+    width: 80px;
+    height: 80px;
+    border-radius: 50%;
+    object-fit: cover;
+    border: 2px solid #ccc;
+    transition: 0.3s ease;
+}
+
+.group-image:hover {
+    border-color: #4CAF50;
+}
+
+.upload-text {
+    position: absolute;
+    bottom: 0;
+    left: 50%;
+    transform: translateX(-50%);
+    background: rgba(0, 0, 0, 0.6);
+    color: white;
+    font-size: 12px;
+    padding: 2px 6px;
+    border-radius: 3px;
+    opacity: 0;
+    transition: 0.3s ease;
+}
+
+.group-image-label:hover .upload-text {
+    opacity: 1;
+}
+
+#groupImageInput {
+    display: none; /* إخفاء حقل الإدخال */
+}
+
+
+/* end: create new group */
+
+/* send file */
+.message-container {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    background: #f9f9f9;
+    padding: 10px;
+    border-radius: 10px;
+    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+}
+
+.message-input {
+    flex-grow: 1;
+    padding: 10px;
+    border: 1px solid #ddd;
+    border-radius: 5px;
+    font-size: 14px;
+    outline: none;
+    resize: none;
+    min-height: 40px;
+}
+
+.message-input:focus {
+    border-color: #4CAF50;
+    box-shadow: 0 0 5px rgba(76, 175, 80, 0.5);
+}
+
+.file-upload label {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 40px;
+    height: 40px;
+    background: #f1f1f1;
+    border-radius: 50%;
+    cursor: pointer;
+    transition: background 0.3s ease;
+}
+
+.file-upload label:hover {
+    background: #ddd;
+}
+
+.file-upload input {
+    display: none;
+}
+
+.message-send {
+    width: 40px;
+    height: 40px;
+    background: #4CAF50;
+    color: white;
+    border: none;
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    cursor: pointer;
+    transition: background 0.3s ease;
+}
+
+.message-send:hover {
+    background: #3E8E41;
+}
+.file-upload {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    cursor: pointer;
+}
+
+.file-label {
+    padding: 10px 15px;
+    background-color: #4CAF50;
+    color: white;
+    border-radius: 5px;
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    font-size: 14px;
+    cursor: pointer;
+}
+
+.file-label i {
+    font-size: 18px;
+}
+.file-display {
+    margin-top: 15px;
+    padding: 10px;
+    border: 1px dashed #ccc;
+    border-radius: 5px;
+    display: none; /* إخفاء بشكل افتراضي */
+    flex-direction: column;
+    gap: 15px;
+    background-color: #f9f9f9;
+}
+
+.file-item {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 10px;
+    border: 1px solid #ddd;
+    border-radius: 5px;
+}
+
+.file-item img,
+.file-item video {
+    max-width: 100px;
+    max-height: 100px;
+    border-radius: 5px;
+    object-fit: cover;
+}
+
+.file-item .file-info {
+    flex-grow: 1;
+    font-size: 14px;
+    color: #333;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+}
+
+.file-item .file-info span {
+    font-weight: bold;
+}
+
+.file-item .file-info button {
+    padding: 5px 10px;
+    background-color: #ff4d4f;
+    color: white;
+    border: none;
+    border-radius: 3px;
+    cursor: pointer;
+}
+
+.file-item .file-info button:hover {
+    background-color: #d9363e;
+}
+/* تصميم الملف الأخير */
+/* تصميم الملف الأخير */
+.file-preview {
+    padding: 10px;
+    border: 1px solid #ddd;
+    border-radius: 5px;
+    background-color: #f9f9f9;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.last-file-item span {
+    font-size: 14px;
+    color: #333;
+}
+
+.btn-primary {
+    background-color: #4CAF50;
+    color: white;
+    border: none;
+    padding: 5px 10px;
+    border-radius: 5px;
+    cursor: pointer;
+}
+
+.btn-primary:hover {
+    background-color: #45a049;
+}
+
+/* المودال */
+.modal {
+    display: none;
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-color: rgba(0, 0, 0, 0.5); /* لون شفاف للخلفية */
+    z-index: 1000; /* فوق كل العناصر */
+    justify-content: center;
+    align-items: center;
+}
+
+.modal-content {
+    background-color: white;
+    border-radius: 10px;
+    padding: 20px;
+    width: 90%;
+    max-width: 600px;
+    max-height: 80%; /* لمنع تجاوز الشاشة */
+    overflow-y: auto; /* السماح بالتمرير إذا تجاوز المحتوى */
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.25);
+}
+
+
+.modal-content .close {
+    position: absolute;
+    top: 10px;
+    right: 15px;
+    font-size: 20px;
+    cursor: pointer;
+}
+
+#all-files-container {
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+    margin-top: 15px;
+}
+
+
+
+
+/* end: send file */

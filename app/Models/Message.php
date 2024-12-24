@@ -18,4 +18,8 @@ class Message extends Model
     public function sender() {
         return $this->belongsTo(User::class, 'sender_id');
     }
+
+    public function files(){
+        return $this->hasMany(MessageFile::class);
+    }
 }
