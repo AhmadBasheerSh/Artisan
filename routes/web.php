@@ -15,14 +15,12 @@ use App\Http\Controllers\PostController;
 Route::get('/', [MainController::class, 'index'])->name('index');
 
 Route::middleware('auth','verified')->group(function () {
-    Route::get('/profile', [ProfileController::class, 'index'])->name('profile');
+    Route::resource('/profile', ProfileController::class);
     Route::resource('/posts', PostController::class);
     Route::resource('/comment', CommentController::class);
     Route::post('/CommentLove/add',[CommentController::class, 'addLove'])->name('comment.addLove');
     Route::post('/CommentLove/delete',[CommentController::class, 'deleteLove'])->name('comment.deleteLove');
     Route::post('/CommentReply/create',[CommentController::class, 'createReply'])->name('comment.createReply');
-    Route::post('/PostLove/add',[PostActionsController::class, 'addLove'])->name('postAction.addLove');
-    Route::post('/PostLove/delete',[PostActionsController::class, 'deleteLove'])->name('postAction.deleteLove');
     Route::get('/conversations', [ConversationController::class, 'index'])->name('conversations.index');
     Route::post('/conversations', [ConversationController::class, 'show'])->name('conversations.show');
 });

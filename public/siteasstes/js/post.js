@@ -25,11 +25,6 @@ function toggleReplies(button) {
     }
 }
 
-function toggleLove($formName) {
-    const form = document.getElementById($formName);
-    form.submit();
-}
-
 // modal JS
 function openModal() {
     const modal = document.getElementById("likesModal");

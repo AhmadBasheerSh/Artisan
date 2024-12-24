@@ -11,16 +11,9 @@
         </div>
         <p class="comment-text">{{ $comment->content }}</p>
         <div class="comment-actions">
-            <form id="commentLoveForm" method="post"
-                action="{{ !$comment->commentLoves->contains('user_id', auth()->id()) ? route('comment.addLove') : route('comment.deleteLove') }}">
-                @csrf
-                <input type="hidden" name="comment_id" value="{{ $comment->id }}">
-                <button class="like-button">
-                    <i class="fa fa-heart {{ $comment->commentLoves->contains('user_id', auth()->id()) ? 'liked' : '' }}"
-                        onclick="toggleLove('commentLoveForm')"></i>
-                    {{ $comment->commentLoves->count() }}
-                </button>
-            </form>
+
+            {{-- @livewire('comment-like', ['comment' => $comment]) --}}
+
             <button class="reply-button" onclick="toggleReplyForm({{ $comment->id }})">
                 <i class="fa fa-reply"></i> رد
             </button>

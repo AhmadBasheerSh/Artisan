@@ -112,31 +112,6 @@ class CommentController extends Controller
         return redirect()->back();
     }
 
-    public function addLove(Request $request)
-    {
-        $request->validate([
-            'comment_id' => 'required',
-        ]);
-
-        CommentLove::create([
-            'user_id' => auth()->id(),
-            'comment_id' => $request->comment_id,
-        ]);
-
-        return redirect()->back();
-    }
-
-    public function deleteLove(Request $request)
-    {
-        $request->validate([
-            'comment_id' => 'required',
-        ]);
-
-        CommentLove::where('comment_id', $request->comment_id)->where('user_id', auth()->id())->delete();
-
-        return redirect()->back();
-    }
-
     public function createReply(Request $request)
     {
         $request->validate([

@@ -11,7 +11,7 @@
     <link rel="stylesheet" href="{{ asset('siteasstes/css/post.css') }}">
     <link rel="stylesheet" href="{{ asset('emojionearea/emojionearea.min.css') }}">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
-
+    @livewireStyles
 </head>
 
 <body>
@@ -32,18 +32,11 @@
 
         <!-- التعليقات -->
         <div class="comments-section">
-            <h3> {{ $post->comments->count() == 0 ? 'لا يوجد تعليقات' : 'التعليقات (' . $post->comments->count() . ')' }} </h3>
 
-            <div class="comments">
-            @foreach ($post->comments as $comment)
-                @if (!$comment->parent)
-                    @include('site.post._comment', ['comment' => $comment])
-                @endif
-            @endforeach
-        </div>
+            @livewire('comments', ['post' => $post])
 
             {{-- اضافة وتعديل تعليق --}}
-            @include('site.post._form')
+            @livewire('comment-form', ['post' => $post])
 
         </div>
     </div>
@@ -79,6 +72,7 @@
         });
     </script>
 
+    @livewireScripts
 </body>
 
 </html>
