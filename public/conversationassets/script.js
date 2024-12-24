@@ -319,23 +319,23 @@ document.querySelectorAll('.close-img').forEach(function(button) {
 });
 
 
-document.querySelector('#sendMessageForm').addEventListener('submit', function (e) {
-    e.preventDefault();  // منع التحديث التلقائي للصفحة
+// document.querySelector('#sendMessageForm').addEventListener('submit', function (e) {
+//     e.preventDefault();  // منع التحديث التلقائي للصفحة
 
-    const formData = new FormData(this);
-    fetch("{{ route('conversations.show') }}", {
-        method: 'POST',
-        headers: {
-            'X-CSRF-TOKEN': document.querySelector('meta[name="csrf-token"]').getAttribute('content')
-        },
-        body: formData
-    })
-    .then(response => response.json())
-    .then(data => {
-        // هنا يمكن إضافة الكود لعرض الرسالة المرسلة في الـ DOM
-        console.log('Message sent', data);
-    })
-    .catch(error => {
-        console.error('Error:', error);
-    });
-});
+//     const formData = new FormData(this);
+//     fetch("{{ route('conversations.show') }}", {
+//         method: 'POST',
+//         headers: {
+//             'X-CSRF-TOKEN': document.querySelector('meta[name="csrf-token"]').getAttribute('content')
+//         },
+//         body: formData
+//     })
+//     .then(response => response.json())
+//     .then(data => {
+//         // هنا يمكن إضافة الكود لعرض الرسالة المرسلة في الـ DOM
+//         console.log('Message sent', data);
+//     })
+//     .catch(error => {
+//         console.error('Error:', error);
+//     });
+// });

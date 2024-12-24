@@ -43,6 +43,7 @@
                 <button class="follow-btn"><i class="fa-sharp fa-solid fa-user-plus"></i>        متابعة  </button>
                 <a href="{{ url('conversations?receiver_id=').base64_encode(5) }}" class="massege-btn"><i class="fa-sharp fa-solid fa-paper-plane"></i>  مراسلة</a>
                 <button class="post-btn"><i class="fa-sharp fa-solid fa-pen"></i>  كتابة منشور</button>
+                <a href="{{route('profile.edit', ['profile' => auth()->user()->id])}}" class="follow-btn"><i class="fa-sharp fa-solid fa-user-plus"></i>        تعديل  </a>
             </div>
         </div>
 
