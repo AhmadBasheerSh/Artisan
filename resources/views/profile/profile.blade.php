@@ -1,5 +1,6 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -7,7 +8,11 @@
     <title>profile</title>
     <link rel="stylesheet" href="{{ asset('profileassets/css/profile.css') }}">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css">
 </head>
+
 <body>
     <!-- navbar -->
     <nav class="navbar">
@@ -16,345 +21,197 @@
         </div>
         <div class="navbar-center">
             <form class="search-form">
-                <input type="text" placeholder="ابحث..." class="search-input">
-                <button type="submit" class="search-btn"><i class="fa fa-search"></i></button>
+                <input type="text" placeholder="ابحث هنا...">
+                <button type="submit"><i class="fa fa-search"></i></button>
             </form>
         </div>
         <div class="navbar-right">
-            <a href="#" class="nav-icon"><i class="fa fa-bell"></i><span class="badge">3</span></a>
-            <a href="#" class="nav-icon"><i class="fa fa-envelope"></i><span class="badge">5</span></a>
+            <a href="#" class="nav-icon notification-icon" onclick="toggleNotifications()"><i
+                    class="fa fa-bell"></i><span class="badge">3</span></a>
+            <a href="#" class="nav-icon messages-icon" onclick="toggleMessages()"><i class="fa fa-envelope"></i><span
+                    class="badge">5</span></a>
             <a href="#" class="nav-icon"><i class="fa fa-home"></i></a>
-            <a href="#" class="nav-icon"><i class="fa fa-user"></i></a>
+            <a href="#" class="nav-icon user-icon" onclick="toggleUserMenu()"><i class="fa fa-user"></i></a>
+
+            <!-- قائمة الإشعارات -->
+            <div class="notifications-dropdown" id="notificationsDropdown">
+                <div class="notification-item">إشعار 1: تم إضافة منشور جديد</div>
+                <div class="notification-item">إشعار 2: تمت الإعجاب بمنشورك</div>
+                <div class="notification-item">إشعار 3: لديك تعليق جديد</div>
+
+            </div>
+
+            <!-- قائمة الرسائل -->
+            <div class="messages-dropdown" id="messagesDropdown">
+                <div class="message-item">رسالة 1: مرحبا، كيف حالك؟</div>
+                <div class="message-item">رسالة 2: لديك طلب جديد</div>
+                <div class="message-item">رسالة 3: شكراً لك على مساهمتك</div>
+                <div class="message-item">رسالة 4: هل تريد الانضمام إلى المجموعة؟</div>
+                <div class="message-item">رسالة 5: تم تحديث حسابك بنجاح</div>
+
+            </div>
+
+            <!-- قائمة المستخدم -->
+            <div class="user-dropdown" id="userDropdown">
+                <div class="user-info">الاسم: المستخدم</div>
+                <div class="user-info">البريد الإلكتروني: user@example.com</div>
+
+            </div>
         </div>
     </nav>
 
-    <div class="profile-container">
-        <!-- Header Section -->
+
+    <script>
+    function toggleNotifications() {
+        const dropdown = document.getElementById("notificationsDropdown");
+        if (dropdown.style.display === "none" || dropdown.style.display === "") {
+            dropdown.style.display = "block";
+        } else {
+            dropdown.style.display = "none";
+        }
+    }
+
+    function toggleUserMenu() {
+        const userDropdown = document.getElementById("userDropdown");
+        if (userDropdown.style.display === "none" || userDropdown.style.display === "") {
+            userDropdown.style.display = "block";
+        } else {
+            userDropdown.style.display = "none";
+        }
+    }
+
+    function toggleMessages() {
+        const messagesDropdown = document.getElementById("messagesDropdown");
+        if (messagesDropdown.style.display === "none" || messagesDropdown.style.display === "") {
+            messagesDropdown.style.display = "block";
+        } else {
+            messagesDropdown.style.display = "none";
+        }
+    }
+    </script>
+
+
+    <div class="container">
         <div class="profile-header">
-            <img src="{{ asset('mainassets/img/ahmad.jpg') }}" alt="Profile Picture" class="profile-picture">
+            <img src="{{asset('mainassets/img/abed.JPG')}}" alt="User Image" class="profile-image">
             <div class="profile-info">
-                <h1 class="profile-name">Ahmad Basheer</h1>
-                <p class="profile-bio"><i class="fa-sharp fa-solid fa-tags"></i>Designer | Photographer | Traveler</p>
-                <p class="profile-bio"><i class="fa-sharp fa-solid fa-envelope"></i>ahmadb@gmail.com</p>
-                <p class="profile-bio"><i class="fa-sharp fa-solid fa-building"></i>Gaza, palestine</p>
-                <p class="profile-bio"><i class="fa-sharp fa-solid fa-calendar"></i>15/8/2001</p>
+                <h2>اسم المستخدم</h2>
+                <p>وصف قصير عن المستخدم. يمكن أن يحتوي على معلومات عن الوظيفة أو الهوايات.</p>
             </div>
-            <div class="buttons">
-                <button class="follow-btn"><i class="fa-sharp fa-solid fa-user-plus"></i>        متابعة  </button>
-                <a href="{{ url('conversations?receiver_id=').base64_encode(5) }}" class="massege-btn"><i class="fa-sharp fa-solid fa-paper-plane"></i>  مراسلة</a>
-                <button class="post-btn"><i class="fa-sharp fa-solid fa-pen"></i>  كتابة منشور</button>
-                <a href="{{route('profile.edit', ['profile' => auth()->user()->id])}}" class="follow-btn"><i class="fa-sharp fa-solid fa-user-plus"></i>        تعديل  </a>
+            <div class="profile-actions">
+                <button><i class="fa fa-user-plus"></i> متابعة</button>
+                <button><i class="fa fa-envelope"></i> <a
+                        href="{{ url('conversations?receiver_id=').base64_encode(5) }}" class="massege-btn">
+                        مراسلة</a></button>
+                <button><i class="fa fa-pen"></i> كتابة منشور</button>
+                <button><i class="fa fa-edit"></i> <a
+                        href="{{route('profile.edit', ['profile' => auth()->user()->id])}}" class="follow-btn"> تعديل
+                        الصفحة الشخصية </a></button>
+
             </div>
         </div>
-
-        <!-- Stats Section -->
-        <div class="profile-stats">
-
-            <div id="openFollowersModal" class="stat-item">
-                <i class="stat-icon fa-sharp fa-solid fa-user-friends" style="color: blue;"></i>
-                <strong>250</strong>
-                <span>متابع</span>
-            </div>
-            <div id="followersModal" class="modal">
-                <div class="modal-content">
-                    <span id="closeFollowersModal" class="close-button">&times;</span>
-                    <h2>المتابعون (25)</h2>
-                    <ul class="followers-list">
-                        <div class="follow-item">
-                            <div class="user-info">
-                                <img src="{{ asset('mainassets/img/ahmad.jpg') }}" alt="User Image" class="user-image">
-                                <div class="user-details">
-                                    <p class="username">اسم المستخدم</p>
-                                    <p class="num-followers">15 متابع</p>
-                                </div>
-                            </div>
-                            <button class="follow-btn"><i class="fa-sharp fa-solid fa-user-plus"></i>        متابعة  </button>
-                        </div>
-                        <div class="follow-item">
-                            <div class="user-info">
-                                <img src="{{ asset('mainassets/img/ahmad.jpg') }}" alt="User Image" class="user-image">
-                                <div class="user-details">
-                                    <p class="username">اسم المستخدم</p>
-                                    <p class="num-followers">15 متابع</p>
-                                </div>
-                            </div>
-                            <button class="follow-btn"><i class="fa-sharp fa-solid fa-user-plus"></i>        متابعة  </button>
-                        </div>
-                        <div class="follow-item">
-                            <div class="user-info">
-                                <img src="{{ asset('mainassets/img/ahmad.jpg') }}" alt="User Image" class="user-image">
-                                <div class="user-details">
-                                    <p class="username">اسم المستخدم</p>
-                                    <p class="num-followers">15 متابع</p>
-                                </div>
-                            </div>
-                            <button class="follow-btn"><i class="fa-sharp fa-solid fa-user-plus"></i>        متابعة  </button>
-                        </div>
-                        <div class="follow-item">
-                            <div class="user-info">
-                                <img src="{{ asset('mainassets/img/ahmad.jpg') }}" alt="User Image" class="user-image">
-                                <div class="user-details">
-                                    <p class="username">اسم المستخدم</p>
-                                    <p class="num-followers">15 متابع</p>
-                                </div>
-                            </div>
-                            <button class="follow-btn"><i class="fa-sharp fa-solid fa-user-plus"></i>        متابعة  </button>
-                        </div>
-                        <div class="follow-item">
-                            <div class="user-info">
-                                <img src="{{ asset('mainassets/img/ahmad.jpg') }}" alt="User Image" class="user-image">
-                                <div class="user-details">
-                                    <p class="username">اسم المستخدم</p>
-                                    <p class="num-followers">15 متابع</p>
-                                </div>
-                            </div>
-                            <button class="follow-btn"><i class="fa-sharp fa-solid fa-user-plus"></i>        متابعة  </button>
-                        </div>
-                        <div class="follow-item">
-                            <div class="user-info">
-                                <img src="{{ asset('mainassets/img/ahmad.jpg') }}" alt="User Image" class="user-image">
-                                <div class="user-details">
-                                    <p class="username">اسم المستخدم</p>
-                                    <p class="num-followers">15 متابع</p>
-                                </div>
-                            </div>
-                            <button class="follow-btn"><i class="fa-sharp fa-solid fa-user-plus"></i>        متابعة  </button>
-                        </div>
-                        <div class="follow-item">
-                            <div class="user-info">
-                                <img src="{{ asset('mainassets/img/ahmad.jpg') }}" alt="User Image" class="user-image">
-                                <div class="user-details">
-                                    <p class="username">اسم المستخدم</p>
-                                    <p class="num-followers">15 متابع</p>
-                                </div>
-                            </div>
-                            <button class="follow-btn"><i class="fa-sharp fa-solid fa-user-plus"></i>        متابعة  </button>
-                        </div>
-                        <div class="follow-item">
-                            <div class="user-info">
-                                <img src="{{ asset('mainassets/img/ahmad.jpg') }}" alt="User Image" class="user-image">
-                                <div class="user-details">
-                                    <p class="username">اسم المستخدم</p>
-                                    <p class="num-followers">15 متابع</p>
-                                </div>
-                            </div>
-                            <button class="follow-btn"><i class="fa-sharp fa-solid fa-user-plus"></i>        متابعة  </button>
-                        </div>
-                        <div class="follow-item">
-                            <div class="user-info">
-                                <img src="{{ asset('mainassets/img/ahmad.jpg') }}" alt="User Image" class="user-image">
-                                <div class="user-details">
-                                    <p class="username">اسم المستخدم</p>
-                                    <p class="num-followers">15 متابع</p>
-                                </div>
-                            </div>
-                            <button class="follow-btn"><i class="fa-sharp fa-solid fa-user-plus"></i>        متابعة  </button>
-                        </div>
-                        <div class="follow-item">
-                            <div class="user-info">
-                                <img src="{{ asset('mainassets/img/ahmad.jpg') }}" alt="User Image" class="user-image">
-                                <div class="user-details">
-                                    <p class="username">اسم المستخدم</p>
-                                    <p class="num-followers">15 متابع</p>
-                                </div>
-                            </div>
-                            <button class="follow-btn"><i class="fa-sharp fa-solid fa-user-plus"></i>        متابعة  </button>
-                        </div>
-                        <div class="follow-item">
-                            <div class="user-info">
-                                <img src="{{ asset('mainassets/img/ahmad.jpg') }}" alt="User Image" class="user-image">
-                                <div class="user-details">
-                                    <p class="username">اسم المستخدم</p>
-                                    <p class="num-followers">15 متابع</p>
-                                </div>
-                            </div>
-                            <button class="follow-btn"><i class="fa-sharp fa-solid fa-user-plus"></i>        متابعة  </button>
-                        </div>
-                        <div class="follow-item">
-                            <div class="user-info">
-                                <img src="{{ asset('mainassets/img/ahmad.jpg') }}" alt="User Image" class="user-image">
-                                <div class="user-details">
-                                    <p class="username">اسم المستخدم</p>
-                                    <p class="num-followers">15 متابع</p>
-                                </div>
-                            </div>
-                            <button class="follow-btn"><i class="fa-sharp fa-solid fa-user-plus"></i>        متابعة  </button>
-                        </div>
-                        <!-- أضف المزيد من المتابعين حسب الحاجة -->
-                    </ul>
-                </div>
-            </div>
-
-
-            <div id="openFollowsModal" class="stat-item">
-                <i class="stat-icon fa-sharp fa-solid fa-eye" style="color: #00bcd4;"></i>
-                <strong>150</strong>
-                <span>يتابع</span>
-            </div>
-            <div id="followsModal" class="modal">
-                <div class="modal-content">
-                    <span id="closeFollowsModal" class="close-button">&times;</span>
-                    <h2>تتابع (63)</h2>
-                    <ul class="followers-list">
-                        <div class="follow-item">
-                            <div class="user-info">
-                                <img src="{{ asset('mainassets/img/ahmad.jpg') }}" alt="User Image" class="user-image">
-                                <div class="user-details">
-                                    <p class="username">اسم المستخدم</p>
-                                    <p class="num-followers">15 متابع</p>
-                                </div>
-                            </div>
-                            <button class="follow-btn"><i class="fa-sharp fa-solid fa-user-plus"></i>        متابعة  </button>
-                        </div>
-                        <div class="follow-item">
-                            <div class="user-info">
-                                <img src="{{ asset('mainassets/img/ahmad.jpg') }}" alt="User Image" class="user-image">
-                                <div class="user-details">
-                                    <p class="username">اسم المستخدم</p>
-                                    <p class="num-followers">15 متابع</p>
-                                </div>
-                            </div>
-                            <button class="follow-btn"><i class="fa-sharp fa-solid fa-user-plus"></i>        متابعة  </button>
-                        </div>
-                        <div class="follow-item">
-                            <div class="user-info">
-                                <img src="{{ asset('mainassets/img/ahmad.jpg') }}" alt="User Image" class="user-image">
-                                <div class="user-details">
-                                    <p class="username">اسم المستخدم</p>
-                                    <p class="num-followers">15 متابع</p>
-                                </div>
-                            </div>
-                            <button class="follow-btn"><i class="fa-sharp fa-solid fa-user-plus"></i>        متابعة  </button>
-                        </div>
-                        <div class="follow-item">
-                            <div class="user-info">
-                                <img src="{{ asset('mainassets/img/ahmad.jpg') }}" alt="User Image" class="user-image">
-                                <div class="user-details">
-                                    <p class="username">اسم المستخدم</p>
-                                    <p class="num-followers">15 متابع</p>
-                                </div>
-                            </div>
-                            <button class="follow-btn"><i class="fa-sharp fa-solid fa-user-plus"></i>        متابعة  </button>
-                        </div>
-                        <div class="follow-item">
-                            <div class="user-info">
-                                <img src="{{ asset('mainassets/img/ahmad.jpg') }}" alt="User Image" class="user-image">
-                                <div class="user-details">
-                                    <p class="username">اسم المستخدم</p>
-                                    <p class="num-followers">15 متابع</p>
-                                </div>
-                            </div>
-                            <button class="follow-btn"><i class="fa-sharp fa-solid fa-user-plus"></i>        متابعة  </button>
-                        </div>
-                        <div class="follow-item">
-                            <div class="user-info">
-                                <img src="{{ asset('mainassets/img/ahmad.jpg') }}" alt="User Image" class="user-image">
-                                <div class="user-details">
-                                    <p class="username">اسم المستخدم</p>
-                                    <p class="num-followers">15 متابع</p>
-                                </div>
-                            </div>
-                            <button class="follow-btn"><i class="fa-sharp fa-solid fa-user-plus"></i>        متابعة  </button>
-                        </div>
-                        <div class="follow-item">
-                            <div class="user-info">
-                                <img src="{{ asset('mainassets/img/ahmad.jpg') }}" alt="User Image" class="user-image">
-                                <div class="user-details">
-                                    <p class="username">اسم المستخدم</p>
-                                    <p class="num-followers">15 متابع</p>
-                                </div>
-                            </div>
-                            <button class="follow-btn"><i class="fa-sharp fa-solid fa-user-plus"></i>        متابعة  </button>
-                        </div>
-                        <div class="follow-item">
-                            <div class="user-info">
-                                <img src="{{ asset('mainassets/img/ahmad.jpg') }}" alt="User Image" class="user-image">
-                                <div class="user-details">
-                                    <p class="username">اسم المستخدم</p>
-                                    <p class="num-followers">15 متابع</p>
-                                </div>
-                            </div>
-                            <button class="follow-btn"><i class="fa-sharp fa-solid fa-user-plus"></i>        متابعة  </button>
-                        </div>
-                        <div class="follow-item">
-                            <div class="user-info">
-                                <img src="{{ asset('mainassets/img/ahmad.jpg') }}" alt="User Image" class="user-image">
-                                <div class="user-details">
-                                    <p class="username">اسم المستخدم</p>
-                                    <p class="num-followers">15 متابع</p>
-                                </div>
-                            </div>
-                            <button class="follow-btn"><i class="fa-sharp fa-solid fa-user-plus"></i>        متابعة  </button>
-                        </div>
-                        <div class="follow-item">
-                            <div class="user-info">
-                                <img src="{{ asset('mainassets/img/ahmad.jpg') }}" alt="User Image" class="user-image">
-                                <div class="user-details">
-                                    <p class="username">اسم المستخدم</p>
-                                    <p class="num-followers">15 متابع</p>
-                                </div>
-                            </div>
-                            <button class="follow-btn"><i class="fa-sharp fa-solid fa-user-plus"></i>        متابعة  </button>
-                        </div>
-                        <div class="follow-item">
-                            <div class="user-info">
-                                <img src="{{ asset('mainassets/img/ahmad.jpg') }}" alt="User Image" class="user-image">
-                                <div class="user-details">
-                                    <p class="username">اسم المستخدم</p>
-                                    <p class="num-followers">15 متابع</p>
-                                </div>
-                            </div>
-                            <button class="follow-btn"><i class="fa-sharp fa-solid fa-user-plus"></i>        متابعة  </button>
-                        </div>
-                        <div class="follow-item">
-                            <div class="user-info">
-                                <img src="{{ asset('mainassets/img/ahmad.jpg') }}" alt="User Image" class="user-image">
-                                <div class="user-details">
-                                    <p class="username">اسم المستخدم</p>
-                                    <p class="num-followers">15 متابع</p>
-                                </div>
-                            </div>
-                            <button class="follow-btn"><i class="fa-sharp fa-solid fa-user-plus"></i>        متابعة  </button>
-                        </div>
-                        <!-- أضف المزيد من المتابعين حسب الحاجة -->
-                    </ul>
-                </div>
-            </div>
-
-
+        <div class="stats">
             <div class="stat-item">
-                <i class="stat-icon fa-sharp fa-solid fa-heart" style="color: red;"></i>
-                <strong>150</strong>
-                <span>اعجاب</span>
+                <h3>300</h3>
+                <p><i class="fa fa-users"></i> المتابعين</p>
             </div>
             <div class="stat-item">
-                <i class="stat-icon fa-sharp fa-solid fa-file-alt" style="color: #ff9800;"></i>
-                <strong>320</strong>
-                <span>منشور</span>
+                <h3>45</h3>
+                <p><i class="fa fa-file-alt"></i> المنشورات</p>
             </div>
             <div class="stat-item">
-                <i class="stat-icon fa-sharp fa-solid fa-shopping-bag" style="color: #ff6600;"></i>
-                <strong>3</strong>
-                <span>الطلبات</span>
+                <h3>120</h3>
+                <p><i class="fa fa-thumbs-up"></i> الإعجابات</p>
             </div>
-        </div>
-
-        <div class="profile-story">
-            <h2><i class="fa-sharp fa-solid fa-book" style="color: green"></i>  القصة وأعمالي</h2>
-            <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Reiciendis cum omnis, laudantium quas mollitia, neque praesentium facere quis, repellat harum quidem asperiores? Laboriosam alias nulla quibusdam impedit ratione aut. Perspiciatis nostrum consequuntur quo reprehenderit ad provident cum deserunt? Totam libero eos nesciunt quasi praesentium, quaerat reiciendis. Ipsa vel commodi natus sapiente omnis repudiandae voluptatem reiciendis blanditiis. Laboriosam similique perspiciatis modi nostrum mollitia. Accusamus alias quos sapiente deleniti maxime aliquid officiis numquam natus totam dignissimos ipsum odio, voluptatem sed porro? Rem in nesciunt dolores numquam recusandae temporibus fugiat. Atque sit omnis enim? Vero minima voluptatibus dolor nulla perspiciatis accusamus aspernatur deserunt ab eaque quis fuga consequuntur, esse error id accusantium autem numquam facilis adipisci sequi quia assumenda debitis officia. Reiciendis optio quos quo error. Nulla iusto recusandae animi provident voluptates? Nam magnam nobis consequatur fugiat voluptatibus labore minima quibusdam cupiditate veritatis explicabo velit, eaque quae ipsam veniam consequuntur. Dolorem, dolor voluptas?</p>
-        </div>
-        <!-- Image Grid Section -->
-        <div class="image-grid">
-            <h2>المنشورات</h2>
-            <div class="grid-item"><img src="{{ asset('mainassets/img/d1.jpg') }}" alt="Pin Image"></div>
-            <div class="grid-item"><img src="{{ asset('mainassets/img/d1.jpg') }}" alt="Pin Image"></div>
-            <div class="grid-item"><img src="{{ asset('mainassets/img/d1.jpg') }}" alt="Pin Image"></div>
-            <div class="grid-item"><img src="image4.jpg" alt="Pin Image"></div>
-            <div class="grid-item"><img src="image5.jpg" alt="Pin Image"></div>
-            <div class="grid-item"><img src="image6.jpg" alt="Pin Image"></div>
+            <div class="stat-item">
+                <h3>20</h3>
+                <p><i class="fa fa-shopping-cart"></i> الطلبات</p>
+            </div>
+            <div class="stat-item">
+                <h3>150</h3>
+                <p><i class="fa fa-user-friends"></i> يتابع</p>
+            </div>
         </div>
     </div>
 
-    <script src="{{ asset('profileassets/js/profile.js') }}"></script>
+    <div class="container" id="container2">
+        <div class="section">
+            <h2>القصة والأعمال <i class="fa fa-book"></i></h2>
+            <p contenteditable=true>
+                يعد هذا المستخدم من الأشخاص المميزين في مجاله. بدأ مشواره منذ سنوات طويلة، حيث عمل على تطوير
+                نفسه واكتساب الخبرات في مختلف المجالات. من خلال أعماله المبتكرة، استطاع أن يجذب اهتمام العديد من
+                المتابعين والعملاء. يركز دائمًا على الجودة والإبداع في كل ما يقدمه.
+            </p>
+        </div>
+    </div>
+
+    <div id="container5" class="container1">
+        <div class="section1">
+            <h2><i class="fa fa-trophy"></i> الأوسمة والإنجازات</h2>
+            <ul contenteditable="true">
+                <li>وسام الإبداع</li>
+                <li>أفضل مصمم للعام</li>
+                <li>شهادة احترافية في البرمجة</li>
+            </ul>
+        </div>
+    </div>
+
+    <div id="container7" class="container1">
+        <div class="section1">
+            <h2><i class="fa fa-share-alt"></i> السوشيال ميديا</h2>
+            <p>
+                <a href="#"><i class="fab fa-facebook-f"></i></a>
+                <a href="#"><i class="fab fa-twitter"></i></a>
+                <a href="#"><i class="fab fa-instagram"></i></a>
+                <a href="#"><i class="fab fa-whatsapp"></i></a>
+                <a href="#"><i class="fab fa-github"></i></a>
+                <a href="#"><i class="fab fa-linkedin-in"></i></a>
+
+            </p>
+        </div>
+    </div>
+
+    <div id="container6" class="container1">
+        <div class="section1">
+            <h2><i class="fa fa-star"></i> التقييمات</h2>
+            <p>⭐⭐⭐⭐⭐ تقييم عام: ممتاز</p>
+        </div>
+    </div>
+
+    <div class="container" id="container3">
+        <div class="timeline">
+            <h2>آخر المنشورات</h2>
+            <div class="post">
+                <h3>عنوان المنشور</h3>
+                <p>محتوى المنشور يذهب هنا...</p>
+                <div class="interactions">
+                    <span><i class="fa fa-thumbs-up"></i> 10 إعجابات</span>
+                    <span><i class="fa fa-comment"></i> 5 تعليقات</span>
+                </div>
+            </div>
+            <div class="post">
+                <h3>عنوان المنشور</h3>
+                <p>محتوى المنشور يذهب هنا...</p>
+                <div class="interactions">
+                    <span><i class="fa fa-thumbs-up"></i> 8 إعجابات</span>
+                    <span><i class="fa fa-comment"></i> 3 تعليقات</span>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div class="container" id="container4">
+        <div class="gallery">
+            <h2>معرض الصور</h2>
+            <div class="gallery-grid">
+                <img src="{{asset('mainassets/img/00228992aaee358292b2bbdf21b91ae4.jpg')}}" alt="صورة 1">
+                <img src="{{asset('mainassets/img/1bc824873efc7693476b6ac886dd9ad9.jpg')}}" alt="صورة 1">
+                <img src="{{asset('mainassets/img/f09a8c0b30fdbc59d57959c15c10fca6.jpg')}}" alt="صورة 1">
+                <img src="{{asset('mainassets/img/e1f6c999fcab91e567948c8930d09f4f.jpg')}}" alt="صورة 1">
+            </div>
+        </div>
+    </div>
+
 </body>
+
 </html>
