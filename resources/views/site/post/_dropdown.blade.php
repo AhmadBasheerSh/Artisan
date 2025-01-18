@@ -3,12 +3,8 @@
     <div class="dropdown">
         <i class="fa fa-ellipsis-h" onclick="toggleDropdown(this)"></i>
         <div class="dropdown-menu">
-            <a class="dropdown-link" href="{{ route('comment.edit', $reply->id) }}">تعديل</a>
-            <form method="post" action="{{ route('comment.destroy', $reply->id) }}">
-                @csrf
-                @method('DELETE')
-                <button type="submit">حذف</button>
-            </form>
+            <a class="dropdown-link" wire:click.prevent='editComment'>تعديل</a>
+            <button wire:click.prevent='deleteComment'>حذف</button>
         </div>
     </div>
 @endif

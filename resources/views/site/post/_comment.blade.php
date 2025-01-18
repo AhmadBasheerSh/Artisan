@@ -1,18 +1,20 @@
 {{-- التعليق واستدعاء الردود عليه --}}
 <div class="comment">
 
-    @include('site.post._dropdown', ['reply' => $comment])
+    @livewire('comment-edit-delete', ['reply' => $comment], key('edit-delete-'.$comment->id))
 
     <img src="{{ asset('mainassets/img/main_1.jpeg') }}" alt="User Avatar" class="user-avatar">
     <div class="comment-content">
         <div class="author-details">
-            <span class="author-name">{{ $comment->user->name }}</span>
-            <small class="post-time">{{ $comment->created_at ? $comment->created_at->diffForHumans() : '' }}</small>
+            <a href="{{ route('profile.index') }}" style="text-decoration: none;">
+                <span class="comment-author-name">{{ $comment->user->name }}</span>
+            </a>
+            <small class="comment-time">{{ $comment->created_at ? $comment->created_at->diffForHumans() : '' }}</small>
         </div>
         <p class="comment-text">{{ $comment->content }}</p>
         <div class="comment-actions">
 
-            {{-- @livewire('comment-like', ['comment' => $comment]) --}}
+            @livewire('comment-like', ['comment' => $comment], key('like-'.$comment->id))
 
             <button class="reply-button" onclick="toggleReplyForm({{ $comment->id }})">
                 <i class="fa fa-reply"></i> رد
@@ -27,7 +29,8 @@
             @endif
         </div>
 
-        @include('site.post._replyForm', ['reply' => $comment])
+        @livewire('add-reply', ['reply' => $comment, 'post' => $post], key('reply-'.$comment->id))
+        {{-- @include('site.post._replyForm', ['reply' => $comment]) --}}
 
         <!-- قسم الردود -->
         <div class="replies" style="display: none;">

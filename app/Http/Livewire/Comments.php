@@ -8,7 +8,7 @@ use Livewire\Component;
 class Comments extends Component
 {
     public $post;
-    protected $listeners = ['commentAdded' => '$refresh'];
+    protected $listeners = ['commentUpdated' => '$refresh', 'commentDeleted' => '$refresh'];
 
     public function render()
     {

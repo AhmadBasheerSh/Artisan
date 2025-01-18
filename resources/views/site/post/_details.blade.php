@@ -1,17 +1,20 @@
 {{-- صاحب المنشور وعنوان ومحتوى المنشور والتفاعلات مع المنشور --}}
 <div class="post-details">
     <div class="author-info">
-        <div class="author-info">
-            <img src="{{ asset('mainassets/img/main_1.jpeg') }}" alt="Author">
-            <div class="author-details">
-                <span class="author-name">{{ $post->user->name }}</span>
-                <small class="post-time">{{ $post->created_at ? $post->created_at->diffForHumans() : '' }}</small>
+        <a href="{{ route('profile.index') }}" style="text-decoration: none;">
+            <div class="author-info">
+                <img src="{{ asset('mainassets/img/main_1.jpeg') }}" alt="Author">
+                <div class="author-details">
+                    <span class="author-name">{{ $post->user->name }}</span>
+                    <small class="post-time">{{ $post->created_at ? $post->created_at->diffForHumans() : '' }}</small>
+                </div>
             </div>
-        </div>
-        @if (auth()->user()->id != $post->user->id &&
+        </a>
+        {{-- @if (auth()->user()->id != $post->user->id &&
                 !auth()->user()->follows()->where('follow_id', $post->user->id)->exists())
             <button class="follow-btn"><i class="fa-sharp fa-solid fa-user-plus"></i> متابعة </button>
-        @endif
+        @endif --}}
+        @livewire('follow', ['post' => $post])
     </div>
     <h2>{{ $post->title }}</h2>
     <p class="post-description">{{ $post->content }}</p>

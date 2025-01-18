@@ -4,6 +4,7 @@ namespace App\Http\Livewire;
 
 use App\Models\Comment;
 use App\Models\CommentLove;
+use App\Notifications\NewCommentLike;
 use Illuminate\Support\Facades\Auth;
 use Livewire\Component;
 
@@ -31,6 +32,7 @@ class CommentLike extends Component
                 'user_id' => Auth::id(),
                 'comment_id' => $this->comment->id,
             ]);
+            $this->comment->user->notify(new NewCommentLike(Auth::user(), $this->comment));
         }
 
         // Update properties

@@ -12,7 +12,7 @@
     /* حاوية المنشور */
     .post-container {
         width: 60%;
-        max-width: 800px;
+        max-width: 750px;
         margin: 20px auto;
         background-color: #fff;
         border-radius: 16px;
@@ -41,9 +41,9 @@
         height: auto;
     }
 
-    .post-image {
+    /* .post-image {
         margin: 0 auto;
-    }
+    } */
 
     .carousel-inner img {
         width: 100%;
@@ -51,11 +51,7 @@
         border-radius: 8px;
     }
 
-    .carousel-item img {
-        width: 100%;        /* اجعل الصورة تأخذ عرض العنصر الكامل */
-        height: auto;       /* اجعل الارتفاع يتناسب مع العرض تلقائيًا */
-        object-fit: cover;  /* يضبط ملاءمة الصورة بحيث تملأ المساحة المحددة */
-    }
+
 
     .carousel-item {
         height: 500px; /* يمكنك تعديل هذا الارتفاع حسب الحاجة */
@@ -63,7 +59,7 @@
 
     .carousel-item img {
         height: 100%; /* تأكد من أن الصور تأخذ الارتفاع المحدد */
-        object-fit: cover;
+        object-fit: contain;
     }
 
 
@@ -107,6 +103,11 @@
     .post-time {
         color: #666; /* لون خفيف للوقت */
         font-size: 12px; /* حجم أصغر للوقت */
+    }
+
+    .comment-time {
+        color: #666; /* لون خفيف للوقت */
+        font-size: 10px; /* حجم أصغر للوقت */
     }
 
     .follow-button {
@@ -181,6 +182,23 @@
         background-color: #c1001a;
     }
 
+    .unfollow-btn {
+        background-color: white;
+        color: #e60023;
+        border: 2px solid #e60023;
+        padding: 10px 20px;
+        border-radius: 20px;
+        cursor: pointer;
+        font-size: 14px;
+        margin-top: 6px ;
+        max-height: 40px;
+    }
+
+    .unfollow-btn:hover {
+        background-color: #cc001f;
+        color: white;
+    }
+
   /* أيقونة القلب */
     .like-button {
         /* display: flex; */
@@ -193,12 +211,12 @@
         cursor: pointer;
     }
 
-    .like-button i {
+    .comment-like-button i {
         color: gray; /* اللون الافتراضي */
         transition: color 0.3s;
     }
 
-    .like-button i.liked {
+    .comment-like-button i.liked {
         color: red; /* اللون عند الإعجاب */
     }
 
@@ -253,10 +271,10 @@
     }
 
     .comment {
-        margin-right: 10px;
+        margin-right: 5px;
         display: flex;
         align-items: flex-start;
-        gap: 10px;
+        gap: 5px;
         margin-top: 10px;
         position: relative;
     }
@@ -304,6 +322,12 @@
         color: #000000;
     }
 
+    .comment-author-name {
+        font-size: 12px;
+        /* font-weight: bold; */
+        color: #000000;
+    }
+
     .replies {
         display: flex;
         margin-top: 10px;
@@ -319,7 +343,8 @@
     }
 
     .re-author-name{
-        font-size: 14px;
+        font-size: 12px;
+        font-weight: bold;
     }
 
     .reply-text{

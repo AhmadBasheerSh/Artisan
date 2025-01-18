@@ -1,8 +1,21 @@
 <div id="postCarousel" class="carousel slide post-image" data-bs-ride="carousel">
-    <!-- عدد الصور  -->
-    <div class="carousel-counter">
-        <span id="currentSlide">1</span> / <span id="totalSlides">{{ $post->images->count() }}</span>
-    </div>
+
+    @if ($post->images->count() > 1)
+        <!-- عدد الصور  -->
+        <div class="carousel-counter">
+            <span id="currentSlide">1</span> / <span id="totalSlides">{{ $post->images->count() }}</span>
+        </div>
+
+        <!-- عناصر التحكم بالصور-->
+        <button class="carousel-control-prev" type="button" data-bs-target="#postCarousel" data-bs-slide="prev">
+            <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+            <span class="visually-hidden">Previous</span>
+        </button>
+        <button class="carousel-control-next" type="button" data-bs-target="#postCarousel" data-bs-slide="next">
+            <span class="carousel-control-next-icon" aria-hidden="true"></span>
+            <span class="visually-hidden">Next</span>
+        </button>
+    @endif
 
     <!-- عرض صور المنشور -->
     <div class="carousel-inner">
@@ -13,13 +26,5 @@
         @endforeach
     </div>
 
-    <!-- عناصر التحكم بالصور-->
-    <button class="carousel-control-prev" type="button" data-bs-target="#postCarousel" data-bs-slide="prev">
-        <span class="carousel-control-prev-icon" aria-hidden="true"></span>
-        <span class="visually-hidden">Previous</span>
-    </button>
-    <button class="carousel-control-next" type="button" data-bs-target="#postCarousel" data-bs-slide="next">
-        <span class="carousel-control-next-icon" aria-hidden="true"></span>
-        <span class="visually-hidden">Next</span>
-    </button>
+
 </div>

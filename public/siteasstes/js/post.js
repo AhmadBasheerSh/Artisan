@@ -58,3 +58,10 @@ function toggleReplyForm(commentId) {
     const replyForm = document.getElementById(`reply-form-${commentId}`);
     replyForm.style.display = replyForm.style.display === 'none' ? 'block' : 'none';
 }
+
+window.addEventListener('focusInput', () => {
+    const input = document.querySelector('#commentInput');
+    if (input) {
+        input.focus();
+    }
+});

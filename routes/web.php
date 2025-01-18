@@ -8,6 +8,7 @@ use App\Http\Controllers\ProfileController;
 use App\Http\Controllers\Admain\AdmainController;
 use App\Http\Controllers\CommentController;
 use App\Http\Controllers\ConversationController;
+use App\Http\Controllers\NotifyController;
 use App\Http\Controllers\PostActionsController;
 use App\Http\Controllers\PostController;
 
@@ -23,6 +24,8 @@ Route::middleware('auth','verified')->group(function () {
     Route::post('/CommentReply/create',[CommentController::class, 'createReply'])->name('comment.createReply');
     Route::get('/conversations', [ConversationController::class, 'index'])->name('conversations.index');
     Route::post('/conversations', [ConversationController::class, 'show'])->name('conversations.show');
+    Route::get('/allNotifications', [NotifyController::class, 'all_notifications'])->name('all_notifications');
+    Route::get('/readNotify/{id}', [NotifyController::class, 'read_notify'])->name('read_notify');
 });
 
 // Authentication routes
