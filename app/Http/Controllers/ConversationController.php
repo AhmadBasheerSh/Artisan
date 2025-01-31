@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\Events\MessageSent;
 use App\Models\Conversation;
 use App\Models\Message;
 use App\Models\User;
@@ -48,111 +49,116 @@ class ConversationController extends Controller
     }
 
 
-//     public function show(Request $request)
-//     {
-//         $conversation_id = $request->conversation_id;
-//         $request->validate([
-//             'message' => 'required|string|max:1000|required_without_all:files',
-//             'files.*' => 'nullable|file|mimes:jpeg,png,gif,pdf,doc,docx,mp4,mkv,avi,webm|max:51200',
-//         ]);
+    //     public function show(Request $request)
+    //     {
+    //         $conversation_id = $request->conversation_id;
+    //         $request->validate([
+    //             'message' => 'required|string|max:1000|required_without_all:files',
+    //             'files.*' => 'nullable|file|mimes:jpeg,png,gif,pdf,doc,docx,mp4,mkv,avi,webm|max:51200',
+    //         ]);
 
-//         if ($request->resever_id) {
+    //         if ($request->resever_id) {
 
-//             $open_chat = Conversation::create([
-//                 'type' => 'individual',
-//             ]);
+    //             $open_chat = Conversation::create([
+    //                 'type' => 'individual',
+    //             ]);
 
-//             $open_chat->users()->attach([auth()->id(), $request->resever_id]);
-//             $conversation_id = $open_chat->id;
-//         }
+    //             $open_chat->users()->attach([auth()->id(), $request->resever_id]);
+    //             $conversation_id = $open_chat->id;
+    //         }
 
-//         $messageText = $request->message ?? '';
-//         $message = Message::create([
-//             'message' => $messageText,
-//             'conversation_id' => $conversation_id,
-//             'sender_id' => auth()->id(),
-//         ]);
+    //         $messageText = $request->message ?? '';
+    //         $message = Message::create([
+    //             'message' => $messageText,
+    //             'conversation_id' => $conversation_id,
+    //             'sender_id' => auth()->id(),
+    //         ]);
 
-//         if ($request->hasFile('files')) {
-//             $files = [];
-//             foreach ($request->file('files') as $file) {
-//                 $destinationPath = public_path('uploads/messages');
-//                 if (!file_exists($destinationPath)) {
-//                     mkdir($destinationPath, 0755, true);
-//                 }
+    //         if ($request->hasFile('files')) {
+    //             $files = [];
+    //             foreach ($request->file('files') as $file) {
+    //                 $destinationPath = public_path('uploads/messages');
+    //                 if (!file_exists($destinationPath)) {
+    //                     mkdir($destinationPath, 0755, true);
+    //                 }
 
-//                 $filename = uniqid() . '_' . $file->getClientOriginalName();
-//                 $file->move($destinationPath, $filename);
+    //                 $filename = uniqid() . '_' . $file->getClientOriginalName();
+    //                 $file->move($destinationPath, $filename);
 
-//                 $files[] = [
-//                     'message_id' => $message->id,
-//                     'file_path' => 'uploads/messages/' . $filename,
-//                     'file_type' => $file->getClientMimeType(),
-//                 ];
-//             }
+    //                 $files[] = [
+    //                     'message_id' => $message->id,
+    //                     'file_path' => 'uploads/messages/' . $filename,
+    //                     'file_type' => $file->getClientMimeType(),
+    //                 ];
+    //             }
 
-//             foreach ($files as $fileData) {
-//                 $message->files()->create($fileData);
-//             }
-//         }
+    //             foreach ($files as $fileData) {
+    //                 $message->files()->create($fileData);
+    //             }
+    //         }
 
-//         // return redirect()->route('conversations.index');
-//         return redirect()->route('conversations.show', ['conversation' => $request->conversation_id])
-//             ->with('success', 'Message sent successfully');
-//     }
+    //         // return redirect()->route('conversations.index');
+    //         return redirect()->route('conversations.show', ['conversation' => $request->conversation_id])
+    //             ->with('success', 'Message sent successfully');
+    //     }
 
-public function show(Request $request)
-{
-    // استلام الـ conversation_id من الطلب
-    $conversation_id = $request->conversation_id;
-
-    // التحقق من صحة البيانات المرسلة
-    $validated = $request->validate([
-        'message' => 'required|string|max:1000|required_without_all:files',
-        'files.*' => 'nullable|file|mimes:jpeg,png,gif,pdf,doc,docx,mp4,mkv,avi,webm|max:51200',
-    ]);
-
-    // إنشاء محادثة جديدة إذا لم يتم تحديد conversation_id و resever_id موجود
-    if ($request->resever_id) {
-        $open_chat = Conversation::create([
-            'type' => 'individual',
+    public function show(Request $request)
+    {
+        $conversation_id = $request->conversation_id;
+        $request->validate([
+            'message' => 'required|string|max:1000|required_without_all:files',
+            'files.*' => 'nullable|file|mimes:jpeg,png,gif,pdf,doc,docx,mp4,mkv,avi,webm|max:51200',
         ]);
 
-        // ربط المحادثة بالمستخدمين
-        $open_chat->users()->attach([auth()->id(), $request->resever_id]);
-        $conversation_id = $open_chat->id;  // تعيين الـ conversation_id للمحادثة الجديدة
-    }
+        if ($request->resever_id) {
 
-    // إرسال الرسالة النصية
-    $messageText = $request->message ?? '';
-    $message = Message::create([
-        'message' => $messageText,
-        'conversation_id' => $conversation_id,
-        'sender_id' => auth()->id(),
-    ]);
+            $open_chat = Conversation::create([
+                'type' => 'individual',
+            ]);
 
-    // التعامل مع رفع الملفات
-    if ($request->hasFile('files')) {
-        foreach ($request->file('files') as $file) {
-            $destinationPath = public_path('uploads/messages');
-            if (!file_exists($destinationPath)) {
-                mkdir($destinationPath, 0755, true);
+            $open_chat->users()->attach([auth()->id(), $request->resever_id]);
+            $conversation_id = $open_chat->id;
+        }
+
+        $messageText = $request->message ?? '';
+        $message = Message::create([
+            'message' => $messageText,
+            'conversation_id' => $conversation_id,
+            'sender_id' => auth()->id(),
+        ]);
+
+        if ($request->hasFile('files')) {
+            $files = [];
+            foreach ($request->file('files') as $file) {
+                $destinationPath = public_path('uploads/messages');
+                if (!file_exists($destinationPath)) {
+                    mkdir($destinationPath, 0755, true);
+                }
+
+                $filename = uniqid() . '_' . $file->getClientOriginalName();
+                $file->move($destinationPath, $filename);
+
+                $files[] = [
+                    'message_id' => $message->id,
+                    'file_path' => 'uploads/messages/' . $filename,
+                    'file_type' => $file->getClientMimeType(),
+                ];
             }
 
-            // إنشاء اسم فريد لكل ملف
-            $filename = uniqid() . '_' . $file->getClientOriginalName();
-            $file->move($destinationPath, $filename);
-
-            // حفظ معلومات الملف في قاعدة البيانات
-            $message->files()->create([
-                'file_path' => 'uploads/messages/' . $filename,
-                'file_type' => $file->getClientMimeType(),
-            ]);
+            foreach ($files as $fileData) {
+                $message->files()->create($fileData);
+            }
         }
+
+        broadcast(new MessageSent($conversation_id,$message))->toOthers();
+
+        return response()->json([
+            'conversation_id' => $conversation_id,
+            'message' => $message->message,
+            'sender' => auth()->user(),
+            'timestamp' => $message->created_at->toDateTimeString(),
+        ]);
+
+        // return response()->json($message);
     }
-
-    // إعادة التوجيه إلى المحادثة مع رسالة نجاح
-    return redirect()->route('conversations.show', ['open_chat' => $conversation_id]);
-}
-
 }

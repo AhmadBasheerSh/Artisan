@@ -339,3 +339,146 @@ document.querySelectorAll('.close-img').forEach(function(button) {
 //         console.error('Error:', error);
 //     });
 // });
+
+// window.Echo.channel('conversation.' + conversationId)
+//     .listen('MessageSent', (event) => {
+//         console.log('New message:', event.message);
+//         console.log('Sender:', event.sender_id);  // هذا هو كائن المرسل
+
+//         // الوصول إلى الصورة من كائن المرسل
+//         const senderImage = event.sender.image ?? 'default-image.jpg'; // استخدم صورة المرسل أو صورة افتراضية
+
+//         // بناء الرسالة الجديدة
+//         const messageContainer = document.querySelector('.conversation-wrapper');
+//         const newMessage = document.createElement('li');
+//         newMessage.classList.add('conversation-item');
+
+//         newMessage.innerHTML = `
+//             <div class="conversation-item-side">
+//                 <img class="conversation-item-image" src="${senderImage}" alt="Sender Image">
+//             </div>
+//             <div class="conversation-item-content">
+//                 <div class="conversation-item-wrapper">
+//                     <div class="conversation-item-box">
+//                         <div class="conversation-item-text">
+//                             ${event.message}
+//                             <div class="conversation-item-time">${event.timestamp}</div>
+//                         </div>
+//                     </div>
+//                 </div>
+//             </div>
+//         `;
+
+//         // إضافة الرسالة إلى المحادثة
+//         messageContainer.appendChild(newMessage);
+
+//         // التمرير لأسفل لعرض الرسالة الأخيرة
+//         messageContainer.scrollTop = messageContainer.scrollHeight;
+//     });
+
+// document.getElementById('messageForm').addEventListener('submit', function (e) {
+//     e.preventDefault(); // منع إعادة تحميل الصفحة
+
+//     const formData = new FormData(this); // الحصول على بيانات النموذج
+//     const url = this.action; // عنوان الـ action المرسل للنموذج
+
+//     fetch(url, {
+//         method: 'POST',
+//         headers: {
+//             'X-CSRF-TOKEN': document.querySelector('meta[name="csrf-token"]').getAttribute('content'),
+//         },
+//         body: formData,
+//     })
+//     .then(response => {
+//         if (!response.ok) {
+//             // إذا كان هناك خطأ HTTP (مثل 404 أو 500)
+//             throw new Error(`HTTP error! Status: ${response.status}`);
+//         }
+//         return response.json(); // حاول تحويل الرد إلى JSON
+//     })
+//     .then(data => {
+//         console.log('Response:', data);
+
+//         // التعامل مع البيانات المستلمة
+//         const messagesContainer = document.querySelector('.conversation-wrapper');
+//         const newMessage = document.createElement('li');
+//         newMessage.classList.add('conversation-item', 'me');
+//         newMessage.innerHTML = `
+//             <div class="conversation-item-side">
+//                 <img class="conversation-item-image" src="${data.sender.image}" alt="Sender Image">
+//             </div>
+//             <div class="conversation-item-content">
+//                 <div class="conversation-item-wrapper">
+//                     <div class="conversation-item-box">
+//                         <div class="conversation-item-text">
+//                             <p>${data.message}</p>
+//                             <div class="conversation-item-time">${new Date(data.timestamp).toLocaleTimeString()}</div>
+//                         </div>
+//                     </div>
+//                 </div>
+//             </div>
+//         `;
+//         messagesContainer.appendChild(newMessage);
+//         messagesContainer.scrollTop = messagesContainer.scrollHeight;
+//         document.getElementById('messageForm').reset();
+//     })
+//     .catch(error => {
+//         console.error('Error:', error); // طباعة الخطأ لمعرفة المشكلة
+//     });
+
+// });
+
+
+document.getElementById('messageForm').addEventListener('submit', function (e) {
+    e.preventDefault(); // منع إعادة تحميل الصفحة
+
+    const formData = new FormData(this); // الحصول على بيانات النموذج
+    const url = this.action; // عنوان الـ action المرسل للنموذج
+
+    fetch(url, {
+        method: 'POST',
+        headers: {
+            'X-CSRF-TOKEN': document.querySelector('meta[name="csrf-token"]').getAttribute('content'), // ضمان أمان الطلب
+        },
+        body: formData,
+    })
+    .then(response => {
+        if (!response.ok) {
+            throw new Error(`HTTP error! Status: ${response.status}`);
+        }
+        return response.json();
+    })
+    .then(data => {
+        console.log('Response:', data);
+
+        // إضافة الرسالة الجديدة إلى الواجهة دون تحديث الصفحة
+        const messagesContainer = document.querySelector('.conversation-wrapper-' + data.conversation_id);
+        const newMessage = document.createElement('li');
+        newMessage.classList.add('conversation-item', 'me');
+
+        newMessage.innerHTML = `
+            <div class="conversation-item-side">
+                <img class="conversation-item-image" src="${data.sender.image}" alt="Sender Image">
+            </div>
+            <div class="conversation-item-content">
+                <div class="conversation-item-wrapper">
+                    <div class="conversation-item-box">
+                        <div class="conversation-item-text">
+                            <p>${data.message}</p>
+                            <div class="conversation-item-time">${new Date(data.timestamp).toLocaleTimeString()}</div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        `;
+
+        messagesContainer.appendChild(newMessage);
+        messagesContainer.scrollTop = messagesContainer.scrollHeight;
+
+        // إعادة تعيين الحقول في النموذج
+        document.getElementById('messageForm').reset();
+    })
+    .catch(error => {
+        console.error('Error:', error);
+    });
+});

@@ -40,7 +40,7 @@
             @include('conversations._header', ['conversation' => $conversation])
         </div>
         <div class="conversation-main">
-            <ul class="conversation-wrapper" >
+            <ul class="conversation-wrapper-{{ $conversation->id }}"  data-conversation-id="{{ $conversation->id }}">
                 @include('conversations._chat')
             </ul>
         </div>

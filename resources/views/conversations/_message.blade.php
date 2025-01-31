@@ -1,4 +1,4 @@
-<form method="post" action="{{ route('conversations.show') }}" id="messageForm" enctype="multipart/form-data">
+<form id="messageForm" method="post" action="{{ route('conversations.show') }}"  enctype="multipart/form-data">
     @csrf
     <div class="conversation-form">
         <div class="file-upload">
