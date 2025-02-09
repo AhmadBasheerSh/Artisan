@@ -1,7 +1,7 @@
 <nav class="navbar">
     <!-- اليمين -->
     <div class="navbar-right">
-        <a href="{{ route('profile.index') }}" style="text-decoration: none;">
+        <a href="{{ route('profile.show',auth()->id()) }}" style="text-decoration: none;">
             <img src="{{ asset('mainassets/img/ahmad.jpg') }}" alt="User" class="user-profile">
         </a>
         <form class="search-form">
@@ -35,7 +35,7 @@
                 <ul class="notification-list">
                     @foreach (auth()->user()->notifications as $notification)
                         <li class="notification-item unread">
-                            <a href="{{ route('profile.index') }}" style="text-decoration: none;">
+                            <a href="{{ route('profile.show',$notification->data['user_id']) }}" style="text-decoration: none;">
                                 <div class="user-avatar-wrapper">
                                     <img src="{{ asset('mainassets/img/ahmad.jpg') }}" alt="User" class="user-avatar">
                                     <div class="notification-type">

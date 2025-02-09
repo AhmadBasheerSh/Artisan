@@ -37,7 +37,7 @@
                     <div class="author-info">
                         <img src="{{ asset('mainassets/img/main_1.jpeg') }}" alt="Author">
                         <div class="author-details">
-                            <a href="{{ route('profile.index') }}" style="text-decoration: none;">
+                            <a href="{{ route('profile.show', $post->user->id) }}" style="text-decoration: none;">
                                 <span class="author-name">{{ $post->user->name }}</span>
                             </a>
                             <small class="post-time">{{ $post->created_at ? $post->created_at->diffForHumans() : '' }}</small>

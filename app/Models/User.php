@@ -43,13 +43,21 @@ class User extends Authenticatable implements MustVerifyEmail
         'email_verified_at' => 'datetime',
     ];
 
-    public function followers() {
-        return $this->hasMany(User::class, 'follower_id');
-    }
+    // public function followers() {
+    //     return $this->hasMany(Follower::class, 'follower_id');
+    // }
 
-    public function follows() {
+    public function following(){
         return $this->belongsToMany(User::class, 'followers', 'follower_id', 'follow_id');
     }
+
+    public function follows(){
+        return $this->belongsToMany(User::class, 'followers', 'follow_id', 'follower_id');
+    }
+
+    // public function follows() {
+    //     return $this->belongsToMany(User::class, 'followers', 'follower_id', 'follow_id');
+    // }
 
     public function reviews() {
         return $this->hasMany(Review::class, 'user_id');

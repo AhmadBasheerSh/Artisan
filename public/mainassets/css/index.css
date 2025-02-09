@@ -1126,10 +1126,7 @@ body {
     /* Smooth transition for nav changes */
 }
 
-.navbar:hover {
-    background: #c37fec;
-    /* Slightly lighter purple for hover effect */
-}
+
 
 .navbar .logo {
     /*    font-size: 2.5em;*/

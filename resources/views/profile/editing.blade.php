@@ -5,7 +5,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>CodingDung | Profile Template</title>
+    <title>تعديل الملف الشخصي</title>
     <link rel="stylesheet" href="{{ asset('profileassets/css/editing.css') }}">
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@4.5.0/dist/css/bootstrap.min.css" rel="stylesheet">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
@@ -13,6 +13,12 @@
 </head>
 
 <body>
+    <div class="back-button">
+        <button onclick="window.history.back()">
+            <i class="fa fa-arrow-left"></i>
+        </button>
+    </div>
+
     <div class="container light-style flex-grow-1 container-p-y">
         <h4 class="font-weight-bold py-3 mb-4">
             إعدادات الحساب
@@ -40,13 +46,13 @@
                         <div class="tab-pane fade active show" id="account-general">
                             <div class="card-body media align-items-center">
                                 <img src="https://bootdey.com/img/Content/avatar/avatar1.png" alt
-                                    class="d-block ui-w-80">
+                                    class="d-block ui-w-80 fixed-avatar" id="preview-image">
                                 <div class="media-body ml-4">
                                     <label class="btn btn-outline-primary">
                                         رفع صورة جديدة
-                                        <input type="file" class="account-settings-fileinput">
+                                        <input type="file" id="image-upload" class="account-settings-fileinput">
                                     </label> &nbsp;
-                                    <button type="button" class="btn btn-default md-btn-flat">إعادة تعيين</button>
+                                    <button type="button" id="reset-button" class="btn btn-default md-btn-flat">إعادة تعيين</button>
                                     <div class="text-light small mt-1">الصور المسموحة بامتداد JPG, GIF او PNG. الحجم الأقصى للصورة 800 كيلوبايت</div>
                                 </div>
                             </div>
@@ -54,19 +60,22 @@
                             <div class="card-body">
                                 <div class="form-group">
                                     <label class="form-label">اسم المستخدم</label>
-                                    <input type="text" class="form-control mb-1" placeholder="أ ب ت">
-                                </div>
-                                <div class="form-group">
-                                    <label class="form-label">الاسم</label>
-                                    <input type="text" class="form-control" placeholder="أ ب ت ث ج">
+                                    <input type="text" class="form-control mb-1" placeholder="{{ auth()->user()->name }}">
                                 </div>
                                 <div class="form-group">
                                     <label class="form-label">الايميل</label>
-                                    <input type="text" class="form-control mb-1" placeholder="someone@mail.com">
-                                    <div class="alert alert-warning mt-3">
+                                    <input type="text" class="form-control mb-1" placeholder="{{ auth()->user()->email }}">
+                                    {{-- <div class="alert alert-warning mt-3">
                                         .لم يتم تأكيد بريدك الإلكتروني. يرجى التحقق من صندوق الوارد الخاص بك<br>
                                         <a href="javascript:void(0)">إعادة إرسال التأكيد</a>
-                                    </div>
+                                    </div> --}}
+                                </div>
+                                <div class="form-group">
+                                    <label class="form-label">الجنس</label>
+                                    <select class="form-control" name="gender">
+                                        <option value="male" {{ auth()->user()->gender == 'male' ? 'selected' : '' }}>ذكر</option>
+                                        <option value="female" {{ auth()->user()->gender == 'female' ? 'selected' : '' }}>أنثى</option>
+                                    </select>
                                 </div>
                                 <div class="form-group">
                                     <label class="form-label">الشركة</label>
@@ -93,13 +102,13 @@
                         <div class="tab-pane fade" id="account-info">
                             <div class="card-body pb-2">
                                 <div class="form-group">
-                                    <label class="form-label">السيرة الذاتية</label>
+                                    <label class="form-label">القصة</label>
                                     <textarea class="form-control"
-                                        rows="5">العميل مهم جدًا، العميل سيتبعه العميل. موريس الآن ينحني، الكرامة تكون amet sollicitudin aculis، المركبات التي تجر. لكن جرة الحداد الآن. حتى يختمر، ليكن ثمن الجمال عظيمًا، ويكون ألم الديم المزعج عظيمًا، حتى يكون الديم اللاسينيا مليئًا بالضحك والحكمة. كورابيتور و نيبه لا. لا يستثمر Maecenas في الدعاية ولا في المتسلقين ولا في وسادة الضحك.</textarea>
+                                        rows="5"> {{ auth()->user()->story }} </textarea>
                                 </div>
                                 <div class="form-group">
                                     <label class="form-label">تاريخ الميلاد</label>
-                                    <input type="text" class="form-control" placeholder="May 3, 1995">
+                                    <input type="text" class="form-control" placeholder="{{ auth()->user()->birthday }}">
                                 </div>
                                 <div class="form-group">
                                     <label class="form-label">الدولة</label>
@@ -113,7 +122,6 @@
                                         <option>مصر</option>
                                         <option>السعودية</option>
                                         <option>الأراضي الفلسطينية</option>
-                                        
                                     </select>
                                 </div>
                             </div>
@@ -122,11 +130,11 @@
                                 <h6 class="mb-4">التواصل</h6>
                                 <div class="form-group">
                                     <label class="form-label">رقم الجوال</label>
-                                    <input type="text" class="form-control" placeholder="+0 (123) 456 7891">
+                                    <input type="text" class="form-control" placeholder="{{ auth()->user()->phone }}">
                                 </div>
                                 <div class="form-group">
                                     <label class="form-label">الموقع الالكتروني</label>
-                                    <input type="text" class="form-control" value>
+                                    <input type="text" class="form-control" value placeholder="{{ auth()->user()->email }}">
                                 </div>
                             </div>
                         </div>
@@ -259,6 +267,8 @@
             <button type="button" class="btn btn-default">إلغاء</button>
         </div>
     </div>
+
+    <script src="{{ asset('profileassets/js/editing.js') }}"></script>
     <script data-cfasync="false" src="/cdn-cgi/scripts/5c5dd728/cloudflare-static/email-decode.min.js"></script>
     <script src="https://code.jquery.com/jquery-1.10.2.min.js"></script>
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@4.5.0/dist/js/bootstrap.bundle.min.js"></script>

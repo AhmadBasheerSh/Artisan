@@ -7,6 +7,8 @@
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
     <title>profile</title>
     <link rel="stylesheet" href="{{ asset('profileassets/css/profile.css') }}">
+    <link rel="stylesheet" href="{{ asset('siteasstes/css/navbar.css') }}">
+    <link rel="stylesheet" href="{{ asset('siteasstes/css/posts_gallery.css') }}">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
     <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
@@ -15,84 +17,148 @@
 
 <body>
     <!-- navbar -->
-    <nav class="navbar">
-        <div class="navbar-left">
-            <h1 class="site-name">لمسات زخرفية</h1>
-        </div>
-        <div class="navbar-center">
-            <form class="search-form">
-                <input type="text" placeholder="ابحث هنا...">
-                <button type="submit"><i class="fa fa-search"></i></button>
-            </form>
-        </div>
-        <div class="navbar-right">
-            <a href="#" class="nav-icon notification-icon" onclick="toggleNotifications()"><i
-                    class="fa fa-bell"></i><span class="badge">3</span></a>
-            <a href="#" class="nav-icon messages-icon" onclick="toggleMessages()"><i class="fa fa-envelope"></i><span
-                    class="badge">5</span></a>
-            <a href="#" class="nav-icon"><i class="fa fa-home"></i></a>
-            <a href="#" class="nav-icon user-icon" onclick="toggleUserMenu()"><i class="fa fa-user"></i></a>
-
-            <!-- قائمة الإشعارات -->
-            <div class="notifications-dropdown" id="notificationsDropdown">
-                <div class="notification-item">إشعار 1: تم إضافة منشور جديد</div>
-                <div class="notification-item">إشعار 2: تمت الإعجاب بمنشورك</div>
-                <div class="notification-item">إشعار 3: لديك تعليق جديد</div>
-
-            </div>
-
-            <!-- قائمة الرسائل -->
-            <div class="messages-dropdown" id="messagesDropdown">
-                <div class="message-item">رسالة 1: مرحبا، كيف حالك؟</div>
-                <div class="message-item">رسالة 2: لديك طلب جديد</div>
-                <div class="message-item">رسالة 3: شكراً لك على مساهمتك</div>
-                <div class="message-item">رسالة 4: هل تريد الانضمام إلى المجموعة؟</div>
-                <div class="message-item">رسالة 5: تم تحديث حسابك بنجاح</div>
-
-            </div>
-
-            <!-- قائمة المستخدم -->
-            <div class="user-dropdown" id="userDropdown">
-                <div class="user-info">الاسم: المستخدم</div>
-                <div class="user-info">البريد الإلكتروني: user@example.com</div>
-
-            </div>
-        </div>
-    </nav>
-
-
-    <script>
-    function toggleNotifications() {
-        const dropdown = document.getElementById("notificationsDropdown");
-        if (dropdown.style.display === "none" || dropdown.style.display === "") {
-            dropdown.style.display = "block";
-        } else {
-            dropdown.style.display = "none";
-        }
-    }
-
-    function toggleUserMenu() {
-        const userDropdown = document.getElementById("userDropdown");
-        if (userDropdown.style.display === "none" || userDropdown.style.display === "") {
-            userDropdown.style.display = "block";
-        } else {
-            userDropdown.style.display = "none";
-        }
-    }
-
-    function toggleMessages() {
-        const messagesDropdown = document.getElementById("messagesDropdown");
-        if (messagesDropdown.style.display === "none" || messagesDropdown.style.display === "") {
-            messagesDropdown.style.display = "block";
-        } else {
-            messagesDropdown.style.display = "none";
-        }
-    }
-    </script>
+    @include('site.navbar')
 
 
     <div class="container">
         <div class="profile-header">
+            <img src="{{ asset('mainassets/img/ahmad.jpg') }}" alt="Profile Picture" class="profile-picture">
+            <div class="profile-info">
+                <h1 class="profile-name">{{ $user->name }}</h1>
+                <p class="profile-bio"><i class="fa-sharp fa-solid fa-tags"></i>Designer | Photographer | Traveler</p>
+                <p class="profile-bio"><i class="fa-sharp fa-solid fa-envelope"></i>{{ $user->email }}</p>
+                <p class="profile-bio"><i class="fa-sharp fa-solid fa-building"></i>{{ $user->address }}</p>
+                <p class="profile-bio"><i class="fa-sharp fa-solid fa-calendar"></i>{{ $user->birthday }}</p>
+            </div>
+            <div class="buttons">
+                {{-- @livewire('follow', ['user' => $user]) --}}
+                @if ($user->id != auth()->id())
+                    {{-- @livewire('follow', ['user' => $user]) --}}
+                    @if (auth()->user()->id != $user->id && !auth()->user()->following()->where('follow_id', $user->id)->exists())
+                        <form action="{{ route('follow.add') }}" method="POST">
+                            @csrf
+                            <input type="hidden" name="user_id" value="{{ $user->id }}">
+                            <button class="follow-btn">متابعة</button>
+                        </form>
+                    @elseif (auth()->user()->id != $user->id)
+                        <form action="{{ route('follow.delete') }}" method="POST">
+                            @csrf
+                            <input type="hidden" name="user_id" value="{{ $user->id }}">
+                            <button class="unfollow-btn">تتابع</button>
+                        </form>
+                    @endif
+                    <button class="massege-btn"><i class="fa-sharp fa-solid fa-paper-plane"></i>  مراسلة</button>
+                @endif
+                @if ($user->id == auth()->id())
+                    <a href="{{ route('profile.edit', auth()->id()) }}" style="text-decoration: none;">
+                        <button  class="post-btn">تعديل الملف الشخصي </button>
+                    </a>
+                    <a href="{{ route('posts.create') }}" style="text-decoration: none;">
+                        <button class="follow-btn"> كتابة منشور</button>
+                    </a>
+                @endif
+
+            </div>
+        </div>
+
+        <!-- Stats Section -->
+        <div class="profile-stats">
+            <div id="openFollowersModal" class="stat-item">
+                <i class="stat-icon fa-sharp fa-solid fa-user-friends" style="color: blue;"></i>
+                <strong>{{ $user->following->count() }}</strong>
+                <span>متابع</span>
+            </div>
+            <div id="followersModal" class="modal">
+                <div class="modal-content">
+                    <span id="closeFollowersModal" class="close-button">&times;</span>
+                    <h2>المتابعون ({{ $user->following->count() }})</h2>
+                    <ul class="followers-container">
+                        @foreach ($user->follows as $follow)
+                            <li class="follower-item">
+                                <div class="follower-info">
+                                    <img src="{{ asset('mainassets/img/ahmad.jpg') }}" alt="User Image" class="follower-avatar">
+                                    <div class="follower-details">
+                                        <a href="{{ route('profile.show',$follow->id) }}" style="text-decoration: none;">
+                                            <p class="follower-name">{{ $follow->name }}</p>
+                                        </a>
+                                        <p class="follower-count">{{ $follow->following->count() }} متابع</p>
+                                    </div>
+                                </div>
+                                @if (auth()->user()->id != $follow->id && !auth()->user()->following()->where('follow_id', $follow->id)->exists())
+                                    <form action="{{ route('follow.add') }}" method="POST" class="follow-form">
+                                        @csrf
+                                        <input type="hidden" name="user_id" value="{{ $follow->id }}">
+                                        <button class="btn follow-btn">متابعة</button>
+                                    </form>
+                                @elseif (auth()->user()->id != $follow->id)
+                                    <form action="{{ route('follow.delete') }}" method="POST" class="unfollow-form">
+                                        @csrf
+                                        <input type="hidden" name="user_id" value="{{ $follow->id }}">
+                                        <button class="btn unfollow-btn">الغاء المتابعة</button>
+                                    </form>
+                                @endif
+                            </li>
+                        @endforeach
+                    </ul>
+                </div>
+            </div>
+            <div id="openFollowsModal" class="stat-item">
+                <i class="stat-icon fa-sharp fa-solid fa-eye" style="color: #00bcd4;"></i>
+                <strong>{{ $user->follows->count() }}</strong>
+                <span>يتابع</span>
+            </div>
+            <div id="followsModal" class="modal">
+                <div class="modal-content">
+                    <span id="closeFollowsModal" class="close-button">&times;</span>
+                    <h2>تتابع ({{ $user->follows->count() }})</h2>
+                    <ul class="followers-container">
+                        @foreach ($user->follows as $follow)
+                            <li class="follower-item">
+                                <div class="follower-info">
+                                    <img src="{{ asset('mainassets/img/ahmad.jpg') }}" alt="User Image" class="follower-avatar">
+                                    <div class="follower-details">
+                                        <a href="{{ route('profile.show',$follow->id) }}" style="text-decoration: none;">
+                                            <p class="follower-name">{{ $follow->name }}</p>
+                                        </a>
+                                        <p class="follower-count">{{ $follow->following->count() }} متابع</p>
+                                    </div>
+                                </div>
+                                @if (auth()->user()->id != $follow->id && !auth()->user()->following()->where('follow_id', $follow->id)->exists())
+                                    <form action="{{ route('follow.add') }}" method="POST" class="follow-form">
+                                        @csrf
+                                        <input type="hidden" name="user_id" value="{{ $follow->id }}">
+                                        <button class="btn follow-btn">متابعة</button>
+                                    </form>
+                                @elseif (auth()->user()->id != $follow->id)
+                                    <form action="{{ route('follow.delete') }}" method="POST" class="unfollow-form">
+                                        @csrf
+                                        <input type="hidden" name="user_id" value="{{ $follow->id }}">
+                                        <button class="btn unfollow-btn">الغاء المتابعة</button>
+                                    </form>
+                                @endif
+                            </li>
+                        @endforeach
+                    </ul>
+                </div>
+            </div>
+            <div class="stat-item">
+                <i class="stat-icon fa-sharp fa-solid fa-heart" style="color: red;"></i>
+                <strong>150</strong>
+                <span>اعجاب</span>
+            </div>
+            <div class="stat-item">
+                <i class="stat-icon fa-sharp fa-solid fa-file-alt" style="color: #ff9800;"></i>
+                <strong>{{ $user->posts->count() }}</strong>
+                <span>منشور</span>
+            </div>
+            <div class="stat-item">
+                <i class="stat-icon fa-sharp fa-solid fa-shopping-bag" style="color: #ff6600;"></i>
+                <strong>3</strong>
+                <span>الطلبات</span>
+            </div>
+        </div>
+
+        {{-- <div class="profile-header">
             <img src="{{asset('mainassets/img/abed.JPG')}}" alt="User Image" class="profile-image">
             <div class="profile-info">
                 <h2>اسم المستخدم</h2>
@@ -109,8 +175,8 @@
                         الصفحة الشخصية </a></button>
 
             </div>
-        </div>
-        <div class="stats">
+        </div> --}}
+        {{-- <div class="stats">
             <div class="stat-item">
                 <h3>300</h3>
                 <p><i class="fa fa-users"></i> المتابعين</p>
@@ -131,13 +197,74 @@
                 <h3>150</h3>
                 <p><i class="fa fa-user-friends"></i> يتابع</p>
             </div>
+        </div> --}}
+    </div>
+
+    <div class="container" id="container4">
+        <div class="gallery_work">
+            <h2>الأعمال</h2>
+            <div class="gallery_work-grid">
+                <img src="{{asset('mainassets/img/00228992aaee358292b2bbdf21b91ae4.jpg')}}" alt="صورة 1">
+                <img src="{{asset('mainassets/img/1bc824873efc7693476b6ac886dd9ad9.jpg')}}" alt="صورة 1">
+                <img src="{{asset('mainassets/img/f09a8c0b30fdbc59d57959c15c10fca6.jpg')}}" alt="صورة 1">
+                <img src="{{asset('mainassets/img/e1f6c999fcab91e567948c8930d09f4f.jpg')}}" alt="صورة 1">
+            </div>
+        </div>
+    </div>
+
+    <div class="container" id="container3">
+        <div class="timeline">
+            <h2>المنشورات</h2>
+            <div class="gallery">
+                @foreach ($user->posts as $post)
+                    <div class="gallery-item">
+                        <a href="{{ route('posts.show', $post->id) }}" class="gallery-item-link ">
+                            <img src="{{ asset('uploads/postImage/' . $post->images[0]->image) }}" alt="صورة 1" class="post-image">
+                        </a>
+                        <div class="author-info-posts">
+                            <div class="author-info-posts">
+                                <img src="{{ asset('mainassets/img/main_1.jpeg') }}" alt="Author">
+                                <div class="author-details">
+                                    <a href="{{ route('profile.show',$post->user->id) }}" style="text-decoration: none;">
+                                        <span class="author-name-posts">{{ $post->user->name }}</span>
+                                    </a>
+                                    <small class="post-time-posts">{{ $post->created_at ? $post->created_at->diffForHumans() : '' }}</small>
+                                </div>
+                            </div>
+                            {{-- @livewire('follow', ['post' => $post]) --}}
+                        </div>
+
+                        <p class="post-title">{{ $post->title }}</p>
+                        <p class="post-content">{{ Str::limit($post->content, 18, '...') }}</p>
+
+                        <div class="actions">
+
+                            @livewire('posts-love', ['post' => $post])
+
+                            <div class="comment-button">
+                                <a href="{{ route('posts.show', $post->id) }}" style="text-decoration: none;">
+                                    <i class="fa-regular fa-comment"></i>
+                                </a>
+                            </div>
+                            <div class="comment-button">
+                                <i class="fa fa-share"></i>
+                            </div>
+                            <div class="bookmark-button">
+                                <i class="fa-regular fa-bookmark"></i>
+                            </div>
+
+                        </div>
+
+                    </div>
+                @endforeach
+            </div>
         </div>
     </div>
 
     <div class="container" id="container2">
         <div class="section">
             <h2>القصة والأعمال <i class="fa fa-book"></i></h2>
-            <p contenteditable=true>
+            <p>
                 يعد هذا المستخدم من الأشخاص المميزين في مجاله. بدأ مشواره منذ سنوات طويلة، حيث عمل على تطوير
                 نفسه واكتساب الخبرات في مختلف المجالات. من خلال أعماله المبتكرة، استطاع أن يجذب اهتمام العديد من
                 المتابعين والعملاء. يركز دائمًا على الجودة والإبداع في كل ما يقدمه.
@@ -148,7 +275,7 @@
     <div id="container5" class="container1">
         <div class="section1">
             <h2><i class="fa fa-trophy"></i> الأوسمة والإنجازات</h2>
-            <ul contenteditable="true">
+            <ul>
                 <li>وسام الإبداع</li>
                 <li>أفضل مصمم للعام</li>
                 <li>شهادة احترافية في البرمجة</li>
@@ -166,7 +293,6 @@
                 <a href="#"><i class="fab fa-whatsapp"></i></a>
                 <a href="#"><i class="fab fa-github"></i></a>
                 <a href="#"><i class="fab fa-linkedin-in"></i></a>
-
             </p>
         </div>
     </div>
@@ -178,40 +304,12 @@
         </div>
     </div>
 
-    <div class="container" id="container3">
-        <div class="timeline">
-            <h2>آخر المنشورات</h2>
-            <div class="post">
-                <h3>عنوان المنشور</h3>
-                <p>محتوى المنشور يذهب هنا...</p>
-                <div class="interactions">
-                    <span><i class="fa fa-thumbs-up"></i> 10 إعجابات</span>
-                    <span><i class="fa fa-comment"></i> 5 تعليقات</span>
-                </div>
-            </div>
-            <div class="post">
-                <h3>عنوان المنشور</h3>
-                <p>محتوى المنشور يذهب هنا...</p>
-                <div class="interactions">
-                    <span><i class="fa fa-thumbs-up"></i> 8 إعجابات</span>
-                    <span><i class="fa fa-comment"></i> 3 تعليقات</span>
-                </div>
-            </div>
-        </div>
-    </div>
 
-    <div class="container" id="container4">
-        <div class="gallery">
-            <h2>معرض الصور</h2>
-            <div class="gallery-grid">
-                <img src="{{asset('mainassets/img/00228992aaee358292b2bbdf21b91ae4.jpg')}}" alt="صورة 1">
-                <img src="{{asset('mainassets/img/1bc824873efc7693476b6ac886dd9ad9.jpg')}}" alt="صورة 1">
-                <img src="{{asset('mainassets/img/f09a8c0b30fdbc59d57959c15c10fca6.jpg')}}" alt="صورة 1">
-                <img src="{{asset('mainassets/img/e1f6c999fcab91e567948c8930d09f4f.jpg')}}" alt="صورة 1">
-            </div>
-        </div>
-    </div>
 
+
+
+    <script src="{{ asset('profileassets/js/profile.js') }}"></script>
+    <script src="{{ asset('siteasstes/js/navbar.js') }}"></script>
 </body>
 
 </html>

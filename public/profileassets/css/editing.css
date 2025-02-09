@@ -3,10 +3,42 @@
 @import url('https://fonts.googleapis.com/css2?family=Lemonada:wght@300..700&display=swap');
 
 body {
-    background: linear-gradient(800deg, #0c89e2, #cd59f0);
+    background: #f0f2f5;
     background-size: cover;
     font-family: 'Playfair Display', serif;
     color: #343a40;
+}
+
+/* إعدادات زر الرجوع */
+.back-button {
+    position: fixed; /* يظل الزر ثابتًا في أعلى الصفحة */
+    top: 20px;
+    left: 20px;
+    z-index: 1000; /* فوق جميع العناصر الأخرى */
+}
+
+.back-button button {
+    background-color: #ffffff;
+    color: #333;
+    border: none;
+    border-radius: 50%;
+    width: 40px;
+    height: 40px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    cursor: pointer;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.2);
+    transition: background-color 0.3s ease;
+}
+
+.back-button button i {
+    font-size: 18px;
+    color: #e60023; /* لون السهم الأحمر مثل Pinterest */
+}
+
+.back-button button:hover {
+    background-color: #f4f4f4;
 }
 
 h4 {
@@ -14,6 +46,13 @@ h4 {
     font-weight: 700;
     text-transform: uppercase;
     letter-spacing: 1px;
+}
+
+.fixed-avatar {
+    width: 300px;  /* الحجم الثابت للعرض */
+    height: 300px; /* الحجم الثابت للطول */
+    object-fit: cover; /* لضمان تناسب الصورة داخل الإطار */
+
 }
 
 .container {

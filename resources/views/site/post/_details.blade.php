@@ -1,7 +1,7 @@
 {{-- صاحب المنشور وعنوان ومحتوى المنشور والتفاعلات مع المنشور --}}
 <div class="post-details">
     <div class="author-info">
-        <a href="{{ route('profile.index') }}" style="text-decoration: none;">
+        <a href="{{ route('profile.show',$post->user->id) }}" style="text-decoration: none;">
             <div class="author-info">
                 <img src="{{ asset('mainassets/img/main_1.jpeg') }}" alt="Author">
                 <div class="author-details">

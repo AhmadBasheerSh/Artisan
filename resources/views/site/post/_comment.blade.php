@@ -6,7 +6,7 @@
     <img src="{{ asset('mainassets/img/main_1.jpeg') }}" alt="User Avatar" class="user-avatar">
     <div class="comment-content">
         <div class="author-details">
-            <a href="{{ route('profile.index') }}" style="text-decoration: none;">
+            <a href="{{ route('profile.show',$comment->user->id) }}" style="text-decoration: none;">
                 <span class="comment-author-name">{{ $comment->user->name }}</span>
             </a>
             <small class="comment-time">{{ $comment->created_at ? $comment->created_at->diffForHumans() : '' }}</small>
